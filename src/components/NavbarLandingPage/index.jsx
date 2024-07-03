@@ -14,7 +14,7 @@ const NavbarLandingPage = () => {
               Sign In
             </LandingButton>
           </NavLink>
-          <NavLink to={"/register"}>
+          <NavLink to={"/registerworker"}>
             <LandingButton className="self-start text-white bg-[#5E50A1]">
               Sign Up
             </LandingButton>

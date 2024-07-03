@@ -1,8 +1,11 @@
 import React from "react";
 import Input from "../EditProfile/Input";
 import TextArea from "../EditProfile/TextArea";
+import { useDispatch } from "react-redux";
+import { addExperience } from "@/configs/redux/action/experienceAction";
 
 const ExperienceForm = () => {
+  const dispatch = useDispatch();
   const [form, setForm] = React.useState({
     position: "",
     company: "",
@@ -10,6 +13,11 @@ const ExperienceForm = () => {
     work_year: "",
     description: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addExperience(form));
+  };
 
   const handleChange = (e) => {
     setForm({
@@ -62,7 +70,7 @@ const ExperienceForm = () => {
           className="items-start px-4 pt-5 pb-24 mt-1 text-sm bg-white rounded border border-gray-200 border-solid text-neutral-400 max-md:pr-5 max-md:max-w-full"
         />
         <button
-          //   onClick={handleSubmit}
+          onClick={handleSubmit}
           className="justify-center items-center px-16 py-4 text-[#FBB017] whitespace-nowrap rounded mt-5 text-center bg-white border-[#FBB017] border"
         >
           <p className="font-bold">Add Experience</p>

@@ -1,8 +1,6 @@
-
 # Peworld Web
 
 Peworld is a website that facilitates the search and recruitment of professional web/mobile developers. On this platform, workers can upload their personal information, portfolio and work experience, which can then be searched and selected by users who act as recruiters.
-
 
 ## Tech Stack
 
@@ -24,7 +22,6 @@ Peworld is a website that facilitates the search and recruitment of professional
 
 🛄Hiring Workers by Recruiter
 
-
 ## Installation
 
 #### Clone this repository
@@ -44,16 +41,12 @@ Peworld is a website that facilitates the search and recruitment of professional
 ```bash
    npm run dev
 ```
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
 `VITE_API_URL`
-
-
-
-
-
 
 ## License
 
@@ -61,4 +54,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Feel Free to Contact me using [Email](alfredcnzagoto@gmail.com).
+Feel Free to Contact me using [alfredcnzagoto@gmail.com](alfredcnzagoto@gmail.com).

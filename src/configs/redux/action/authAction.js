@@ -57,7 +57,7 @@ export const register = ({ name, email, phone, password }, navigate) => {
       .post("/workers/register", data)
       .then(() => {
         dispatch(registerSuccess());
-        navigate("/profile");
+        navigate("/login");
       })
       .catch((error) => {
         dispatch(registerFailure(error.message));
