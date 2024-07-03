@@ -24,7 +24,7 @@ const Card = () => {
       >
         <img
           className="w-full h-48 object-cover my-5 px-5 sm:w-48 sm:h-auto"
-          src="/public/Ellipse 325.png"
+          src="/Ellipse 325.png"
           alt="Profile"
         />
         <div className="p-6 sm:flex-1">

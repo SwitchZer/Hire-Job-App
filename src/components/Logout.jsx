@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logoutUser } from "@/configs/redux/action/workerAction";
+import { logoutUser } from "@/configs/redux/action/authAction";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 

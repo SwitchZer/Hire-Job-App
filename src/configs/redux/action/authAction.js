@@ -2,6 +2,18 @@ import api from "@/configs/api";
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+export const registerRequest = () => ({
+  type: REGISTER_REQUEST,
+});
+
+export const registerSuccess = () => ({
+  type: REGISTER_SUCCESS,
+});
+
+export const registerFailure = (error) => ({
+  type: REGISTER_FAILURE,
+  payload: error,
+});
 
 export const loginUser =
   ({ email, password }, navigate) =>
@@ -21,27 +33,14 @@ export const loginUser =
         dispatch({ type: "LOGIN_SUCCESS" });
         const { token, refreshToken } = res.data.data;
         localStorage.setItem("token", token);
-        localStorage.setItem("resfreshToken", refreshToken);
-        navigate("/profile");
+        localStorage.setItem("refreshToken", refreshToken);
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.response);
         dispatch({ type: "LOGIN_SUCCESS", payload: err.response });
       });
   };
-
-export const registerRequest = () => ({
-  type: REGISTER_REQUEST,
-});
-
-export const registerSuccess = () => ({
-  type: REGISTER_SUCCESS,
-});
-
-export const registerFailure = (error) => ({
-  type: REGISTER_FAILURE,
-  payload: error,
-});
 
 export const register = ({ name, email, phone, password }, navigate) => {
   return (dispatch) => {
@@ -63,5 +62,21 @@ export const register = ({ name, email, phone, password }, navigate) => {
       .catch((error) => {
         dispatch(registerFailure(error.message));
       });
+  };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    try {
+      // Dispatch the logout action
+      dispatch({ type: "LOGOUT_USER" });
+
+      // Remove the token from localStorage
+      localStorage.removeItem("token");
+      localStorage.removeItem("refreshToken");
+    } catch (error) {
+      // Handle any errors that may occur during the logout process
+      console.error("Logout error:", error);
+    }
   };
 };

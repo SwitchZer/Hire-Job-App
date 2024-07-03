@@ -1,96 +1,176 @@
-import Card from "@/components/Card/Card";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 
-import TopJobs from "@/components/TopJobs";
-import Divi from "@/components/Divi";
 import React, { useEffect, useState } from "react";
-import { getWorker } from "@/configs/redux/action/workerAction";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getWorker } from "@/configs/redux/action/workerAction";
+import Navbar from "@/components/Navbar";
+import Input from "@/components/EditProfile/Input";
+import Button from "@/components/EditProfile/Button";
+import HomeCard from "@/components/HomeCard";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Adjust the number according to your requirements
-  dispatch(getWorker(currentPage, itemsPerPage));
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
+  const talent = useSelector((state) => state.worker.workers);
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedSort, setSelectedSort] = useState("");
+  const [selectedSortBy, setSelectedSortBy] = useState("");
+  const [params, setParams] = useState({
+    limit: 9,
+    page: 1,
+    search: "",
+    sort: "created_at",
+    sortBy: "DESC",
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getWorker(params));
+  }, [dispatch, params]);
+
+  const handleNavigate = (id) => {
+    navigate(`/profile/${id}`);
   };
 
+  const handlePrevious = () => {
+    setParams({
+      ...params,
+      page: params.page - 1,
+    });
+  };
   const handleNext = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setParams({
+      ...params,
+      page: params.page + 1,
+    });
   };
 
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearch = () => {
+    setParams({
+      ...params,
+      search: searchInput,
+      sort: selectedSort,
+      sortBy: selectedSortBy,
+    });
+  };
+
+  const handleSortChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedSort(selectedValue);
+  };
+
+  const handleSortByChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedSortBy(selectedValue);
+  };
   return (
     <>
-      <div className="flex flex-col bg-neutral-100">
+      <div className="bg-[#F6F7F8]">
         <Navbar />
-        <main>
-          <TopJobs />
-          <form className="container flex gap-5 self-center py-1.5 pr-2 pl-5 mt-12 max-w-full text-center bg-white rounded-lg shadow-[0px_1px_20px_rgba(197,197,197,0.25)] w-[1140px] max-md:flex-wrap max-md:pl-5 max-md:mt-10 max-sm:-mb-1">
-            <input
-              className="flex-auto my-auto text-sm text-center leading-5 text-zinc-400"
-              placeholder="Search for any skill"
-              // onChange={handleSearch}
-            />
 
-            <input type="text" id="search" name="search" className="sr-only" />
-            <div className="flex gap-5 justify-between text-base font-semibold whitespace-nowrap">
-              <div className="flex gap-5 justify-between items-center text-zinc-400">
-                <img
-                  src="/search (1) 1.svg"
-                  alt="Category"
-                  className="shrink-0 self-stretch my-auto w-6 aspect-square"
-                />
-                <div className="shrink-0 self-stretch w-px border border-solid bg-zinc-400 border-zinc-400 h-[58px]" />
-                <div className="self-stretch my-auto">Kategori</div>
-              </div>
-              <button
-                type="submit"
-                className="justify-center px-9 py-5 my-auto text-white rounded bg-[#5E50A1] max-md:px-5"
-              >
-                Search
-              </button>
+        <div>
+          <div className="px-[150px] py-[33px] bg-[#5E50A1]">
+            <div className="container mx-auto">
+              <h1 className="font-bold text-[28px] leading-5 text-white">
+                Top Jobs
+              </h1>
             </div>
-          </form>
-          <div className="container flex flex-col self-center pt-10 pb-10 mt-12 w-full font-semibold bg-white rounded-lg max-w-[1140px] shadow-[0px_1px_20px_rgba(197,197,197,0.25)] max-md:mt-10 max-md:max-w-full">
-            <React.Fragment>
-              <Card />
-            </React.Fragment>
           </div>
-          <nav className="container justify-center flex gap-3.5 self-center px-5 mt-12 text-lg leading-7 whitespace-nowrap text-zinc-400 max-md:flex-wrap max-md:mt-10 max-sm:ml-0">
-            <button
-              onClick={handlePrev}
-              className="shrink-0 rounded bg-white border border-gray-200 border-solid aspect-square w-[58px]"
-            >
-              <img
-                src="next 2.svg"
-                alt="Previous Page"
-                className="flex justify-center items-center pl-5"
-              />
-            </button>
-            {/* <button
-              aria-current="page"
-              className="flex justify-center items-center px-6 font-bold text-white rounded bg-[#5E50A1] h-[58px] w-[58px] max-md:px-5"
-            >
-              {params.page}
-            </button> */}
 
-            <button
-              onClick={handleNext}
-              className="shrink-0 rounded bg-white border border-gray-200 border-solid aspect-square w-[58px]"
-            >
-              <img
-                src="next 3.svg"
-                alt="Next Page"
-                className="flex justify-center items-center pl-4"
-              />
-            </button>
-          </nav>
-        </main>
+          <div className="px-[150px] py-[50px]">
+            <div className="container mx-auto flex flex-col gap-[50px]">
+              <div className="flex bg-white p-[8px] rounded-[8px] overflow-hidden shadow-[0px_1px_20px_0_rgba(197,197,197,0.25)]">
+                <div className="flex w-full pr-[25px]">
+                  <Input
+                    onChange={handleSearchInputChange}
+                    value={searchInput}
+                    name="search"
+                    className="p-[20px] outline-none font-normal text-sm leading-5 text-[#1F2A36] placeholder:text-[#858D96] border-0"
+                    label=""
+                    type="text"
+                    placeholder="Search for any skill"
+                  />
+                  {/* <img
+                    onClick={handleSearch}
+                    className="w-6 cursor-pointer"
+                    src={GreySearch}
+                  /> */}
+                </div>
+
+                <div className="flex border-l pl-[25px] gap-[25px]">
+                  <select
+                    className="outline-none font-normal text-sm leading-5 text-[#1F2A36]"
+                    value={selectedSort}
+                    onChange={handleSortChange}
+                  >
+                    <option value="created_at" selected>
+                      Sort by created date
+                    </option>
+                    <option value="name">Sort by name</option>
+                    <option value="location">Sort by location</option>
+                  </select>
+                  <select
+                    className="outline-none font-normal text-sm leading-5 text-[#1F2A36]"
+                    value={selectedSortBy}
+                    onChange={handleSortByChange}
+                  >
+                    <option value="DESC" selected>
+                      DESC
+                    </option>
+                    <option value="ASC">ASC</option>
+                  </select>
+                  <Button
+                    onClick={handleSearch}
+                    variant="primary-purple"
+                    text="Search"
+                    className="px-[30px] py-[15px] rounded-[4px] font-bold text-sm leading-6 text-white bg-[#5E50A1]"
+                  >
+                    Search
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex flex-col rounded-[8px] overflow-hidden shadow-[0px_1px_20px_0_rgba(197,197,197,0.25)] gap-[1px]">
+                {talent.map((item) => (
+                  <div key={item.id} onClick={() => handleNavigate(item.id)}>
+                    <HomeCard
+                      image={item.photo}
+                      name={item.name}
+                      job={item.job_desk}
+                      location={item.domicile}
+                      skills={item.skills}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-[6px] justify-center items-center">
+                <div
+                  onClick={handlePrevious}
+                  className="flex rounded-[4px] bg-white border border-[#E2E5ED] size-[58px] items-center justify-center"
+                >
+                  <p> {"<"} </p>
+                </div>
+                <div className="flex rounded-[4px] bg-[#5E50A1] border border-[#E2E5ED] size-[58px] items-center justify-center font-normal text-lg leading-7 text-white">
+                  {params.page}
+                </div>
+
+                <div
+                  onClick={handleNext}
+                  className="flex rounded-[4px] bg-white border border-[#E2E5ED] size-[58px] items-center justify-center"
+                >
+                  <p> {">"} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <Footer />
       </div>
     </>

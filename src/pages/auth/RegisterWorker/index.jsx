@@ -1,7 +1,7 @@
 import Hero from "@/components/Login/hero";
 import RegisterForm from "@/components/Register/RegisterForm";
 
-const Register = () => {
+const RegisterWorker = () => {
   return (
     <>
       <div>
@@ -18,4 +18,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterWorker;

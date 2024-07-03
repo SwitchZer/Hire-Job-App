@@ -13,8 +13,9 @@ export const ADD_SKILL_FAILURE = "ADD_SKILL_FAILURE";
 export const REMOVE_SKILL_REQUEST = "REMOVE_SKILL_REQUEST";
 export const REMOVE_SKILL_SUCCESS = "REMOVE_SKILL_SUCCESS";
 export const REMOVE_SKILL_FAILURE = "REMOVE_SKILL_FAILURE";
-
-// Action Creators
+export const UPLOAD_FILE_REQUEST = "UPLOAD_FILE_REQUEST";
+export const UPLOAD_FILE_SUCCESS = "UPLOAD_FILE_SUCCESS";
+export const UPLOAD_FILE_FAILURE = "UPLOAD_FILE_FAILURE";
 export const fetchProfileRequest = () => ({
   type: FETCH_PROFILE_REQUEST,
 });
@@ -41,37 +42,6 @@ export const editProfileFailure = (error) => ({
   type: EDIT_PROFILE_FAILURE,
   payload: error,
 });
-
-export const fetchProfile = () => {
-  return (dispatch) => {
-    dispatch(fetchProfileRequest());
-
-    api
-      .get("/workers/profile")
-      .then((response) => {
-        const profile = response.data.data;
-        dispatch(fetchProfileSuccess(profile));
-      })
-      .catch((error) => {
-        dispatch(fetchProfileFailure(error.message));
-      });
-  };
-};
-
-export const editProfile = (data) => {
-  return (dispatch) => {
-    dispatch(editProfileRequest());
-
-    api
-      .put("/workers/profile", data)
-      .then(() => {
-        dispatch(editProfileSuccess());
-      })
-      .catch((error) => {
-        dispatch(editProfileFailure(error.message));
-      });
-  };
-};
 
 export const addSkillRequest = () => ({
   type: ADD_SKILL_REQUEST,
@@ -101,6 +71,39 @@ export const removeSkillFailure = (error) => ({
   payload: error,
 });
 
+// Action Creators
+
+export const fetchProfile = () => {
+  return (dispatch) => {
+    dispatch(fetchProfileRequest());
+
+    api
+      .get("/workers/profile/self")
+      .then((response) => {
+        const profile = response.data.data;
+        dispatch(fetchProfileSuccess(profile));
+      })
+      .catch((error) => {
+        dispatch(fetchProfileFailure(error.message));
+      });
+  };
+};
+
+export const editProfile = (data) => {
+  return (dispatch) => {
+    dispatch(editProfileRequest());
+
+    api
+      .put("/workers/profile", data)
+      .then(() => {
+        dispatch(editProfileSuccess());
+      })
+      .catch((error) => {
+        dispatch(editProfileFailure(error.message));
+      });
+  };
+};
+
 export const addSkill = (skill) => {
   return (dispatch) => {
     dispatch(addSkillRequest());
@@ -129,4 +132,33 @@ export const removeSkill = (id) => {
         dispatch(removeSkillFailure(error.message));
       });
   };
+};
+
+export const uploadFile = (file) => async (dispatch) => {
+  try {
+    dispatch({ type: UPLOAD_FILE_REQUEST });
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data = await response.json();
+    dispatch({
+      type: UPLOAD_FILE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPLOAD_FILE_FAILURE,
+      payload: error.message,
+    });
+  }
 };

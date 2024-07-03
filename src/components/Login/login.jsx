@@ -54,12 +54,18 @@ const LoginForm = () => {
           disabled={status === "loading"}
           className="justify-center items-center w-full py-5 mt-6 font-bold text-white whitespace-nowrap bg-amber-400 rounded border border-black border-solid shadow-sm max-md:px-5 max-md:max-w-full"
         >
-          Masuk
+          Login
         </Button>
       </form>
       <div className="text-center mt-8">
-        Anda belum punya akun?
-        <span className="text-amber-400"> Daftar disini</span>
+        You don't have an account yet?{" "}
+        <a href="/registerworker" className="text-amber-400">
+          Register as Worker
+        </a>{" "}
+        or{" "}
+        <a href="/registerrecruiter" className="text-amber-400">
+          Register as Recruiter
+        </a>
       </div>
     </div>
   );

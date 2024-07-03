@@ -78,7 +78,10 @@ const RegisterForm = () => {
       </Button>
       <div className="text-center mt-8">
         Already Have Account?
-        <span className="text-amber-400"> Login Here</span>
+        <a href="/login" className="text-amber-400">
+          {" "}
+          Login Here
+        </a>
       </div>
     </div>
   );

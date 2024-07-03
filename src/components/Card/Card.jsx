@@ -9,7 +9,7 @@ const Card = () => {
   const { workers, loading, error } = useSelector((state) => state.worker);
 
   const handleImageError = (event) => {
-    event.target.src = "/public/Ellipse 325.png";
+    event.target.src = "/Ellipse 325.png";
   };
   const handleNavigate = (workerId) => {
     navigate(`/profile/${workerId}`);
@@ -39,7 +39,7 @@ const Card = () => {
           >
             {worker.photo ? (
               <img
-                className="item-center w-full h-48 object-cover my-5 px-5 sm:w-48 sm:h-auto"
+                className="item-center w-full m-auto object-cover my-5 px-5 sm:w-48 sm:h-auto"
                 src={worker.photo}
                 alt={worker.name}
                 onError={handleImageError}
@@ -47,7 +47,7 @@ const Card = () => {
             ) : (
               <img
                 className="justify-center m-auto object-cover my-5 px-5 sm:w-48 sm:h-auto"
-                src="/public/Ellipse 325.png"
+                src="/Ellipse 325.png"
                 alt={worker.name}
               />
             )}
@@ -56,7 +56,7 @@ const Card = () => {
                 {worker.name}
               </h3>
               <h2 className="text-xl font-bold mb-2">{worker.job_desk}</h2>
-              <p className="text-gray-600 mb-4">Lorem ipsum dolor sit amet</p>
+              <p className="text-gray-600 mb-4">{worker.description}</p>
               <div className="flex space-x-4">
                 <span className="inline-flex items-center space-x-1 text-yellow-500">
                   <svg
@@ -69,18 +69,6 @@ const Card = () => {
                   </svg>
                 </span>
                 <span className="inline-flex items-center space-x-1 text-gray-500">
-                  <svg
-                    className="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
                   {worker && worker.skills && worker.skills.length > 2 ? (
                     <>
                       {worker.skills.slice(0, 2).map((skill, index) => (

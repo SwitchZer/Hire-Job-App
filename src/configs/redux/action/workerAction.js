@@ -23,17 +23,21 @@ export const getWorker = () => {
   };
 };
 
-export const logoutUser = () => {
+export const getWorkerId = (id) => {
   return async (dispatch) => {
+    dispatch({ type: FETCH_WORKERS_REQUEST });
+
     try {
-      await api.get("/auth/logout");
-
-      dispatch({ type: "LOGOUT_USER" });
-
-      localStorage.removeItem("token");
+      const response = await api.get(`/workers/${id}`);
+      dispatch({
+        type: FETCH_WORKERS_SUCCESS,
+        payload: response.data.data,
+      });
     } catch (error) {
-      // Handle any error that occurs during the logout process
-      // ...
+      dispatch({
+        type: FETCH_WORKERS_FAILURE,
+        payload: error.message,
+      });
     }
   };
 };

@@ -1,16 +1,19 @@
 import ProtectedRoute from "@/components/Module/ProtectedRoute";
-import Profile from "@/components/Profile";
 import Login from "@/pages/auth/Login";
-import Register from "@/pages/auth/Register";
-// import RegisterRecruiter from "@/pages/auth/RegisterRecruiter";
+import RegisterRecruiter from "@/pages/auth/RegisterRecruiter";
+import RegisterWorker from "@/pages/auth/RegisterWorker";
 import EditProfile from "@/pages/main/EditProfile";
 import Home from "@/pages/main/Home";
 import LandingPage from "@/pages/main/LandingPage";
-// import Latihan from "@/pages/main/Latihan";
 import Portofilio from "@/pages/main/Portofolio";
-import ProfileCompany from "@/pages/main/ProfileCompany";
+
+import ProfileId from "@/pages/main/ProfileWorker";
+import ProfileCompany from "@/pages/main/ProfileRecruiter";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProfileWorker from "@/pages/main/ProfileWorker";
+import ProfileRecruiter from "@/pages/main/ProfileRecruiter";
+import ProfileDetail from "@/pages/main/ProfileDetail";
 
 const MainRouter = () => {
   // const { token } = useSelector((state) => state.auth);
@@ -19,7 +22,8 @@ const MainRouter = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/registerworker" element={<RegisterWorker />} />
+        <Route path="/registerrecruiter" element={<RegisterRecruiter />} />
         {/* <Route
           path="/home"
           element={token ? <Home /> : <Navigate to="/login" />}
@@ -33,10 +37,18 @@ const MainRouter = () => {
           }
         />
         <Route
-          path="/profile/"
+          path="/profileworker"
           element={
             <ProtectedRoute>
-              <EditProfile />
+              <ProfileWorker />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profilerecruiter"
+          element={
+            <ProtectedRoute>
+              <ProfileRecruiter />
             </ProtectedRoute>
           }
         />
@@ -44,12 +56,12 @@ const MainRouter = () => {
           path="/profile/:id"
           element={
             <ProtectedRoute>
-              <Profile />
+              <ProfileDetail />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/editprofile/:id"
+          path="/editprofile"
           element={
             <ProtectedRoute>
               <EditProfile />
