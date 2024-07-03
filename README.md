@@ -1,8 +1,64 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Peworld Web
 
-Currently, two official plugins are available:
+Peworld is a website that facilitates the search and recruitment of professional web/mobile developers. On this platform, workers can upload their personal information, portfolio and work experience, which can then be searched and selected by users who act as recruiters.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Tech Stack
+
+**Programming language:** JavaScript
+
+**Library:** React.Js, Redux Thunk.
+
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,tailwind,react,redux)](https://skillicons.dev)
+
+## Features
+
+🛄CRUD Portfolio
+
+🛄CRUD Experience
+
+🛄Update Profile + Image Profile
+
+🛄Pagination, Search and Sort Worker
+
+🛄Hiring Workers by Recruiter
+
+
+## Installation
+
+#### Clone this repository
+
+```bash
+   git clone https://github.com/SwitchZer/Hire-Job-App.git
+```
+
+#### Install Depedencies
+
+```bash
+   npm install
+```
+
+#### Start Project
+
+```bash
+   npm run dev
+```
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`VITE_API_URL`
+
+
+
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+Feel Free to Contact me using [Email](alfredcnzagoto@gmail.com).
