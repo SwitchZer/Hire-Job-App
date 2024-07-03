@@ -50,15 +50,10 @@ To run this project, you will need to add the following environment variables to
 
 `VITE_API_URL`
 
-
-
-
-
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-Feel Free to Contact me using [Email](alfredcnzagoto@gmail.com).
+Feel Free to Contact me using [alfredcnzagoto@gmail.com](alfredcnzagoto@gmail.com).
