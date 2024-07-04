@@ -4,12 +4,12 @@ export const FETCH_WORKERS_REQUEST = "FETCH_WORKERS_REQUEST";
 export const FETCH_WORKERS_SUCCESS = "FETCH_WORKERS_SUCCESS";
 export const FETCH_WORKERS_FAILURE = "FETCH_WORKERS_FAILURE";
 
-export const getWorker = () => {
+export const getWorker = (params) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_WORKERS_REQUEST });
 
     try {
-      const response = await api.get(`/workers`);
+      const response = await api.get(`/workers`, params);
       dispatch({
         type: FETCH_WORKERS_SUCCESS,
         payload: response.data.data,

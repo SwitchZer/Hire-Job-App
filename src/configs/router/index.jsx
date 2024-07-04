@@ -5,10 +5,7 @@ import RegisterWorker from "@/pages/auth/RegisterWorker";
 import EditProfile from "@/pages/main/EditProfile";
 import Home from "@/pages/main/Home";
 import LandingPage from "@/pages/main/LandingPage";
-import Portofilio from "@/pages/main/Portofolio";
-
-import ProfileId from "@/pages/main/ProfileWorker";
-import ProfileCompany from "@/pages/main/ProfileRecruiter";
+import Portofilio from "@/pages/main/Portofolio"
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfileWorker from "@/pages/main/ProfileWorker";
@@ -53,7 +50,7 @@ const MainRouter = () => {
           }
         />
         <Route
-          path="/profile/:id"
+          path="/detailprofile/:id"
           element={
             <ProtectedRoute>
               <ProfileDetail />
@@ -65,14 +62,6 @@ const MainRouter = () => {
           element={
             <ProtectedRoute>
               <EditProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profilecompany"
-          element={
-            <ProtectedRoute>
-              <ProfileCompany />
             </ProtectedRoute>
           }
         />

@@ -18,30 +18,14 @@ export const checkRoleFailure = (error) => ({
   payload: error,
 });
 
-export const checkRoleReducer = () => {
+export const checkRole = () => {
   return async (dispatch) => {
     try {
-      dispatch(checkRoleRequest());
-
-      // Make a GET request to the check-role endpoint
-      const response = await api(`/auth/check-role`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // Add any necessary authorization headers, such as the token
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const role = data.data.role;
-        dispatch(checkRoleSuccess(role));
-      } else {
-        const errorData = await response.json();
-        dispatch(checkRoleFailure(errorData.error));
-      }
+      dispatch(checkRoleRequest);
+      const response = await api.get("/auth/check-role");
+      dispatch(checkRoleSuccess(response.data.role));
     } catch (error) {
+      console.error("Error checking user role:", error);
       dispatch(checkRoleFailure(error.message));
     }
   };

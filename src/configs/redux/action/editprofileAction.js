@@ -134,17 +134,14 @@ export const removeSkill = (id) => {
   };
 };
 
-export const uploadFile = (file) => async (dispatch) => {
+export const uploadFileWorker = (photo) => async (dispatch) => {
   try {
     dispatch({ type: UPLOAD_FILE_REQUEST });
 
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("photo", photo);
 
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await api.put("/workers/profile/photo", formData);
 
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status}`);

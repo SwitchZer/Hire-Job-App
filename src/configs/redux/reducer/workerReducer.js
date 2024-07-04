@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   workers: [],
+  profile: {},
   loading: false,
   error: null,
 };

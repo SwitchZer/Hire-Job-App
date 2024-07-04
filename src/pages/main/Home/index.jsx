@@ -30,7 +30,7 @@ const Home = () => {
   }, [dispatch, params]);
 
   const handleNavigate = (id) => {
-    navigate(`/profile/${id}`);
+    navigate(`/detailprofile/${id}`);
   };
 
   const handlePrevious = () => {
@@ -124,14 +124,12 @@ const Home = () => {
                     </option>
                     <option value="ASC">ASC</option>
                   </select>
-                  <Button
+                  <button
                     onClick={handleSearch}
-                    variant="primary-purple"
-                    text="Search"
-                    className="px-[30px] py-[15px] rounded-[4px] font-bold text-sm leading-6 text-white bg-[#5E50A1]"
+                    className={`justify-center items-center px-16 py-4 text-white whitespace-nowrap rounded px-[30px] py-[15px] rounded-[4px] font-bold text-sm leading-6 text-white bg-[#5E50A1]`}
                   >
                     Search
-                  </Button>
+                  </button>
                 </div>
               </div>
 

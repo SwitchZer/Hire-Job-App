@@ -32,75 +32,58 @@ const ProfileDetail = () => {
       <Navbar />
       <div className="bg-[#5E50A1] h-[361px] mb-[-361px] "></div>
 
-      <div className="px-[150px] pt-[70px] pb-[210px] max-lg:px-[30px]">
+      <div className="pt-10 pb-[210px] max-lg:px-[30px]">
         <div className="flex gap-[30px] container mx-auto max-lg:flex-col">
           <div className="flex flex-col basis-4/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg">
             <div className="flex flex-col gap-5 items-center">
-              <img src={profile.photo} className="size-24" />
+              <img
+                src={profile.photo || "Mask Group.png"}
+                className="size-24 rounded-full"
+              />
               <div className="flex flex-col gap-[13px] w-full">
                 <h2 className="font-semibold text-[22px] text-[#1F2A36]">
                   {profile.name}
                 </h2>
                 <p className="font-normal text-sm leading-6 text-[#1F2A36]">
-                  {profile.job_desk}
+                  {profile.job_desk || "Your Job Desk"}
                 </p>
                 <div className="flex gap-[11px]">
                   {/* <img src={GreyPin} /> */}
                   <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
-                    {profile.domicile}
+                    {profile.domicile || "Your Domicile"}
                   </p>
                 </div>
                 <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
-                  {profile.workplace}
+                  {profile.workplace || "Your Work Place"}
                 </p>
               </div>
               <p className="font-normal text-sm leading-6 text-[#9EA0A5] w-full">
-                {profile.description}
+                {profile.description || "Your Description"}
               </p>
               {role === "Recruiter" && (
-                <Button
-                  variant="primary-purple"
-                  className="w-full"
+                <button
                   onClick={handleHire}
-                  text="Hire"
-                />
+                  className="justify-center bg-[#5E50A1]  items-center px-16 py-4 text-white whitespace-nowrap rounded"
+                >
+                  Edit profile
+                </button>
               )}
             </div>
 
-            {skills.length > 0 && (
-              <div className="flex flex-col gap-5">
-                <h3 className="font-semibold text-[22px] leading-6 text-[#1F2A36]">
-                  Skill
-                </h3>
-                <ul className="flex flex-wrap gap-x-[10px] gap-y-[20px]">
-                  {skills.map((item) => (
-                    <Tag key={item.id} skill={item.skill_name} />
-                  ))}
-                </ul>
-              </div>
-            )}
+            {skills.map((skill) => (
+              <li key={skill.id}>
+                {skill.skill_name}
+                {/* <button onClick={() => handleRemoveSkill(skill.id)}>
+                  Remove
+                </button> */}
+              </li>
+            ))}
 
-            <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]">
-              {profile.email && (
-                <Social image={EmailIcon} social={profile.email} />
-              )}
-
-              {profile.instagram && (
-                <Social image={InstagramIcon} social={profile.instagram} />
-              )}
-
-              {profile.github && (
-                <Social image={GithubIcon} social={profile.github} />
-              )}
-
-              {profile.gitlab && (
-                <Social image={GitlabIcon} social={profile.gitlab} />
-              )}
-            </div>
+            <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]"></div>
           </div>
 
           <div className="flex flex-col basis-8/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg ">
-            <ProfileTab user={id} />
+            {/* <ExperiencePortfolioTab /> */}
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import {
   addSkill,
   fetchProfile,
   removeSkill,
-  uploadFile,
+  uploadFileWorker,
 } from "@/configs/redux/action/editprofileAction";
 import Button from "@/components/EditProfile/Button";
 import Input from "@/components/EditProfile/Input";
@@ -60,7 +60,7 @@ const EditProfile = () => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    dispatch(uploadFile(file));
+    dispatch(uploadFileWorker(file));
   };
 
   const handleCancel = () => {
@@ -112,7 +112,6 @@ const EditProfile = () => {
                       <input
                         type="file"
                         id="upload-photo"
-                        className="hidden"
                         onChange={handleFileUpload}
                       />
                       <img
@@ -127,7 +126,7 @@ const EditProfile = () => {
                       {profile.name}
                     </h1>
                     <p className="mt-5 text-gray-800 leading-[171%]">
-                      {profile.job_desk}
+                      {profile.job_desk || "Please Add Job Desk"}
                     </p>
                     <div className="flex gap-3 mt-5 leading-[143%]">
                       <img

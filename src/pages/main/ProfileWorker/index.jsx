@@ -1,5 +1,6 @@
 import Button from "@/components/EditProfile/Button";
 import Footer from "@/components/Footer";
+import ExperiencePortfolioTab from "@/components/Module/Profile/ExperiencePortfolioTab";
 import Navbar from "@/components/Navbar";
 import { fetchSkills } from "@/configs/redux/action/fetchSkillAction";
 import { getWorkerProfile } from "@/configs/redux/action/profileAction";
@@ -11,8 +12,8 @@ const ProfileWorker = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { profile } = useSelector((state) => state.profile);
-  const skills = useSelector((state) => state.skills.mySkills);
+  const profile = useSelector((state) => state.profile.profile);
+  const skills = useSelector((state) => state.profile.skills);
 
   const handleEdit = () => {
     navigate("/editprofile");
@@ -33,26 +34,29 @@ const ProfileWorker = () => {
           <div className="flex flex-col basis-4/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg">
             {profile && (
               <div className="flex flex-col gap-5 items-center">
-                <img src={profile.photo} className="size-24 rounded-full" />
+                <img
+                  src={profile.photo || "Mask Group.png"}
+                  className="size-24 rounded-full"
+                />
                 <div className="flex flex-col gap-[13px] w-full">
                   <h2 className="font-semibold text-[22px] text-[#1F2A36]">
                     {profile.name}
                   </h2>
                   <p className="font-normal text-sm leading-6 text-[#1F2A36]">
-                    {profile.job_desk}
+                    {profile.job_desk || "Your Job Desk"}
                   </p>
                   <div className="flex gap-[11px]">
                     {/* <img src={GreyPin} /> */}
                     <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
-                      {profile.domicile}
+                      {profile.domicile || "Your Domicile"}
                     </p>
                   </div>
                   <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
-                    {profile.workplace}
+                    {profile.workplace || "Your Work Place"}
                   </p>
                 </div>
                 <p className="font-normal text-sm leading-6 text-[#9EA0A5] w-full">
-                  {profile.description}
+                  {profile.description || "Your Description"}
                 </p>
                 <button
                   onClick={handleEdit}
@@ -63,21 +67,20 @@ const ProfileWorker = () => {
               </div>
             )}
 
-            {skills &&
-              skills.map((skill) => (
-                <li key={skill.id}>
-                  {skill.skill_name}
-                  {/* <button onClick={() => handleRemoveSkill(skill.id)}>
+            {skills.map((skill) => (
+              <li key={skill.id}>
+                {skill.skill_name}
+                {/* <button onClick={() => handleRemoveSkill(skill.id)}>
                     Remove
                   </button> */}
-                </li>
-              ))}
+              </li>
+            ))}
 
             <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]"></div>
           </div>
 
           <div className="flex flex-col basis-8/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg ">
-            {/* <ProfileTab /> */}
+            <ExperiencePortfolioTab />
           </div>
         </div>
       </div>
