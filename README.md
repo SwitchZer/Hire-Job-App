@@ -56,8 +56,8 @@ To run this project, you will need to add the following environment variables to
       <td>Home Page</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./screenshoot/PeworldWebLandingPage.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./screenshot/PeworldWebHome.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/PeworldWebLandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshot/PeworldWebHome.png" border="0" alt="" /></td>
    </tr>
 
 </table>
