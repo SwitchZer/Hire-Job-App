@@ -50,11 +50,17 @@ To run this project, you will need to add the following environment variables to
 
 ## Screenshots
 
-Landing Page
-![Landing Page](https://i.imgur.com/8oMcO2y.png)
+<table>
+   <tr>
+      <td>Landing Page</td>
+      <td>Home Page</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./screenshoot/PeworldWebLandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./screenshot/PeworldWebHome.png" border="0" alt="" /></td>
+   </tr>
 
-Home
-![Home](https://i.imgur.com/dhYcH6o.png)
+</table>
 
 ## License
 
