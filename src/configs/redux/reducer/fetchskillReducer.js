@@ -5,7 +5,7 @@ import {
 } from "@/configs/redux/action/fetchSkillAction";
 
 const initialState = {
-  skill: [],
+  data: [],
   loading: false,
   error: null,
 };

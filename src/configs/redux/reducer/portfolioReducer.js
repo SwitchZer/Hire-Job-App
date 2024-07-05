@@ -63,7 +63,7 @@ const portfolioReducer = (state = initialState, action) => {
     case FETCH_MYPORTFOLIO_SUCCESS:
       return {
         ...state,
-        portfolio: action.payload,
+        myPortfolio: action.payload,
         loading: false,
         error: null,
       };

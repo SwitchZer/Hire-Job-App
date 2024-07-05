@@ -13,8 +13,8 @@ const ExperiencePortfolioTab = () => {
     setToggle(id);
   };
 
-  const myPortfolio = useSelector((state) => state.portfolio.myPortfolio);
-  const myExperience = useSelector((state) => state.experience.myExperience);
+  const { myPortfolio } = useSelector((state) => state.portfolio);
+  const { myExperience } = useSelector((state) => state.experience);
 
   useEffect(() => {
     dispatch(getMyPortfolio());

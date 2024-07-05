@@ -12,7 +12,7 @@ export const getWorker = (params) => {
     dispatch({ type: FETCH_WORKERS_REQUEST });
 
     try {
-      const response = await api.get(`/workers`, params);
+      const response = await api.get(`/workers`, { params });
       dispatch({
         type: FETCH_WORKERS_SUCCESS,
         payload: response.data.data,

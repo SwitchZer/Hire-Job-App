@@ -64,7 +64,7 @@ const EditProfile = () => {
   };
 
   const handleCancel = () => {
-    navigate("/");
+    navigate("/profileworker");
   };
 
   useEffect(() => {

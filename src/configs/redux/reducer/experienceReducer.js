@@ -6,6 +6,9 @@ import {
   FETCH_EXPERIENCE_REQUEST,
   FETCH_EXPERIENCE_SUCCESS,
   FETCH_EXPERIENCE_FAILURE,
+  FETCH_MYEXPERIENCE_REQUEST,
+  FETCH_MYEXPERIENCE_SUCCESS,
+  FETCH_MYEXPERIENCE_FAILURE,
 } from "../action/experienceAction";
 
 const initialState = {
@@ -26,7 +29,7 @@ const experienceReducer = (state = initialState, action) => {
     case ADD_EXPERIENCE_SUCCESS:
       return {
         ...state,
-        experiences: [...state.experience, action.payload],
+        experience: [...state.experience, action.payload],
         loading: false,
       };
     case ADD_EXPERIENCE_FAILURE:
@@ -44,11 +47,30 @@ const experienceReducer = (state = initialState, action) => {
     case FETCH_EXPERIENCE_SUCCESS:
       return {
         ...state,
-        portfolios: action.payload,
+        experience: action.payload,
         loading: false,
         error: null,
       };
     case FETCH_EXPERIENCE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FETCH_MYEXPERIENCE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FETCH_MYEXPERIENCE_SUCCESS:
+      return {
+        ...state,
+        myExperience: action.payload,
+        loading: false,
+        error: null,
+      };
+    case FETCH_MYEXPERIENCE_FAILURE:
       return {
         ...state,
         loading: false,

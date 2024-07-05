@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   user: null,
-  token: null,
+  token: localStorage.getItem("token") || "",
   error: null,
   loading: false,
 };
@@ -22,6 +22,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        token: action.payload,
       };
     case "LOGIN_FAILURE":
       return {

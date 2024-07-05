@@ -7,6 +7,7 @@ import portfolioReducer from "./portfolioReducer";
 import experienceReducer from "./experienceReducer";
 import roleReducer from "./checkRoleReducer";
 import recruiterReducer from "./recruiterReducer";
+import { fetchSkillReducer } from "./fetchskillReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
   worker: workerReducer,
   editProfile: editprofileReducer,
   checkRole: roleReducer,
-  skills: editprofileReducer,
+  skills: fetchSkillReducer,
   portfolio: portfolioReducer,
   experience: experienceReducer,
   recruiter: recruiterReducer,

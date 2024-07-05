@@ -30,8 +30,8 @@ export const loginUser =
       },
     })
       .then((res) => {
-        dispatch({ type: "LOGIN_SUCCESS" });
         const { token, refreshToken } = res.data.data;
+        dispatch({ type: "LOGIN_SUCCESS", payload: token });
         localStorage.setItem("token", token);
         localStorage.setItem("refreshToken", refreshToken);
         navigate("/home");

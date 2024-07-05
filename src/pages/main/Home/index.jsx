@@ -39,6 +39,7 @@ const Home = () => {
       page: params.page - 1,
     });
   };
+  
   const handleNext = () => {
     setParams({
       ...params,

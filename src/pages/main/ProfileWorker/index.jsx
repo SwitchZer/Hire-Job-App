@@ -13,7 +13,7 @@ const ProfileWorker = () => {
   const navigate = useNavigate();
 
   const profile = useSelector((state) => state.profile.profile);
-  const skills = useSelector((state) => state.profile.skills);
+  const { data } = useSelector((state) => state.skills);
 
   const handleEdit = () => {
     navigate("/editprofile");
@@ -67,12 +67,12 @@ const ProfileWorker = () => {
               </div>
             )}
 
-            {skills.map((skill) => (
-              <li key={skill.id}>
-                {skill.skill_name}
-                {/* <button onClick={() => handleRemoveSkill(skill.id)}>
-                    Remove
-                  </button> */}
+            {data.map((item) => (
+              <li
+                key={item.id}
+                className="px-[14px] py-[4px] bg-[#FBB017] bg-opacity-60 border border-[#FBB017] border-solid rounded-[4px] font-semibold text-xs leading-5 text-white"
+              >
+                {item.skill_name}
               </li>
             ))}
 
