@@ -23,7 +23,7 @@ export const checkRole = () => {
     try {
       dispatch(checkRoleRequest);
       const response = await api.get("/auth/check-role");
-      dispatch(checkRoleSuccess(response.data.role));
+      dispatch(checkRoleSuccess(response.data.data.role));
     } catch (error) {
       console.error("Error checking user role:", error);
       dispatch(checkRoleFailure(error.message));

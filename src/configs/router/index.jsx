@@ -5,12 +5,13 @@ import RegisterWorker from "@/pages/auth/RegisterWorker";
 import EditProfile from "@/pages/main/EditProfile";
 import Home from "@/pages/main/Home";
 import LandingPage from "@/pages/main/LandingPage";
-import Portofilio from "@/pages/main/Portofolio"
+import Portofilio from "@/pages/main/Portofolio";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfileWorker from "@/pages/main/ProfileWorker";
 import ProfileRecruiter from "@/pages/main/ProfileRecruiter";
 import ProfileDetail from "@/pages/main/ProfileDetail";
+import Hire from "@/pages/main/Hire";
 
 const MainRouter = () => {
   // const { token } = useSelector((state) => state.auth);
@@ -70,6 +71,14 @@ const MainRouter = () => {
           element={
             <ProtectedRoute>
               <Portofilio />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/detailprofile/:id/hire"
+          element={
+            <ProtectedRoute>
+              <Hire />
             </ProtectedRoute>
           }
         />

@@ -5,19 +5,19 @@ const WhyUsSection = () => {
   const features = [
     {
       icon: "/tick 1.svg",
-      text: "Lorem ipsum dolor sit amet.",
+      text: "Easy To Hire.",
     },
     {
       icon: "/tick 1.svg",
-      text: "Lorem ipsum dolor sit amet.",
+      text: "Easy To Search Talent.",
     },
     {
       icon: "/tick 1.svg",
-      text: "Lorem ipsum dolor sit amet.",
+      text: "Detailed Talent.",
     },
     {
       icon: "/tick 1.svg",
-      text: "Lorem ipsum dolor sit amet.",
+      text: "Updated!.",
     },
   ];
 
@@ -34,7 +34,7 @@ const WhyUsSection = () => {
         <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
           <div className="flex flex-col items-start px-5 mt-10 text-base leading-7 text-gray-600 max-md:mt-10 max-md:max-w-full">
             <h2 className="mb-2 self-stretch text-4xl font-semibold text-gray-800 leading-[56px] max-md:max-w-full">
-              Kenapa harus mencari tallent di peworld
+              Why should you look for talent in Peworld?
             </h2>
             {features.map((feature, index) => (
               <FeatureItem

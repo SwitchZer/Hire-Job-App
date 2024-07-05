@@ -30,11 +30,10 @@ const RegisterForm = () => {
   return (
     <div className="flex flex-col self-stretch px-5 my-auto text-base max-md:mt-10 max-md:max-w-full">
       <h1 className="text-3xl font-semibold text-gray-800 max-md:max-w-full">
-        Halo, Pewpeople
+        Hello, Pewpeople
       </h1>
       <p className="mt-6 text-lg text-gray-600 max-md:max-w-full">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-        ipsum et dui rhoncus auctor.
+        Start Your Journey Here!
       </p>
       <InputField
         type="text"

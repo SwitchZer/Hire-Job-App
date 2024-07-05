@@ -7,14 +7,14 @@ const HeroSection = () => {
         <div className="flex flex-col w-[44%] max-md:ml-0 max-md:w-full">
           <div className="flex flex-col self-stretch px-5 my-auto max-md:mt-10 max-md:max-w-full">
             <h1 className="text-5xl font-semibold text-gray-800 leading-[70px] max-md:max-w-full">
-              Talenta terbaik negri untuk perubahan revolusi 4.0
+              The country's best talent for revolutionary change 4.0
             </h1>
             <p className="mt-11 text-lg leading-7 text-gray-600 max-md:mt-10 max-md:max-w-full">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              publish your profile, portfolio and work experience here and GET
+              HIRE!
             </p>
             <button className="justify-center self-start p-6 mt-14 text-base font-bold text-white rounded bg-[#5E50A1] max-md:px-5 max-md:mt-10">
-              Mulai Dari Sekarang
+              Start Now
             </button>
           </div>
         </div>

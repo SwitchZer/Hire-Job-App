@@ -10,8 +10,7 @@ function TestimonialCard() {
       },
       name: "Harry Styles",
       title: "Web Developer",
-      testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.",
+      testimonial: "The ease of finding talent here makes us save more time.",
     },
     {
       avatar: {
@@ -20,7 +19,7 @@ function TestimonialCard() {
       },
       name: "Niall Horan",
       title: "Web Developer",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      testimonial: "Peworld made it easy for me to get hired.",
     },
     {
       avatar: {
@@ -29,7 +28,7 @@ function TestimonialCard() {
       },
       name: "Louis Tomlinson",
       title: "Web Developer",
-      testimonial: "Lorem ipsum dolor sit amet, consectetur",
+      testimonial: "Peworld made it possible for me to get my dream job",
     },
   ];
   return (

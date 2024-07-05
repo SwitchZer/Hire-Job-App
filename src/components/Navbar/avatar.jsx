@@ -10,7 +10,7 @@ const AvatarIcon = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
-  const { role } = useSelector((state) => state.checkRole);
+  const role = useSelector((state) => state.checkRole.role);
   useEffect(() => {
     if (token) {
       dispatch(checkRole());

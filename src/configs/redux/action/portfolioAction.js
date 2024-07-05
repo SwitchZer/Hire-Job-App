@@ -6,6 +6,9 @@ export const ADD_PORTFOLIO_FAILURE = "ADD_PORTFOLIO_FAILURE";
 export const FETCH_PORTFOLIO_REQUEST = "FETCH_PORTFOLIO_REQUEST";
 export const FETCH_PORTFOLIO_SUCCESS = "FETCH_PORTFOLIO_SUCCESS";
 export const FETCH_PORTFOLIO_FAILURE = "FETCH_PORTFOLIO_FAILURE";
+export const FETCH_MYPORTFOLIO_REQUEST = "FETCH_MYPORTFOLIO_REQUEST";
+export const FETCH_MYPORTFOLIO_SUCCESS = "FETCH_MYPORTFOLIO_SUCCESS";
+export const FETCH_MYPORTFOLIO_FAILURE = "FETCH_MYPORTFOLIO_FAILURE";
 
 export const addPortfolio = (portfolioData) => {
   return async (dispatch) => {
@@ -23,11 +26,14 @@ export const addPortfolio = (portfolioData) => {
 export const getMyPortfolio = () => {
   return async (dispatch) => {
     try {
-      dispatch({ type: FETCH_PORTFOLIO_REQUEST });
+      dispatch({ type: FETCH_MYPORTFOLIO_REQUEST });
       const response = await api.get("/portofolio");
-      dispatch({ type: FETCH_PORTFOLIO_SUCCESS, payload: response.data.data });
+      dispatch({
+        type: FETCH_MYPORTFOLIO_SUCCESS,
+        payload: response.data.data,
+      });
     } catch (error) {
-      dispatch({ type: FETCH_PORTFOLIO_FAILURE, payload: error });
+      dispatch({ type: FETCH_MYPORTFOLIO_FAILURE, payload: error });
     }
   };
 };

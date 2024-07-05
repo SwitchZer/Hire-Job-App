@@ -13,7 +13,7 @@ export const addExperience = (experienceData) => {
 
     try {
       const response = await api.post("/experience", experienceData);
-      dispatch({ type: ADD_EXPERIENCE_SUCCESS, payload: response.data });
+      dispatch({ type: ADD_EXPERIENCE_SUCCESS, payload: response.data.data });
     } catch (error) {
       dispatch({ type: ADD_EXPERIENCE_FAILURE, payload: error.message });
     }
@@ -25,7 +25,7 @@ export const getMyExperience = () => {
     try {
       dispatch({ type: FETCH_EXPERIENCE_REQUEST });
       const response = await api.get("/experience");
-      dispatch({ type: FETCH_EXPERIENCE_SUCCESS, payload: response.data });
+      dispatch({ type: FETCH_EXPERIENCE_SUCCESS, payload: response.data.data });
     } catch (error) {
       dispatch({ type: FETCH_EXPERIENCE_FAILURE, payload: error });
     }

@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   loading: false,
-  role: {},
+  role: null,
   error: null,
 };
 

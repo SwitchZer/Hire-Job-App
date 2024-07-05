@@ -1,9 +1,10 @@
 import Footer from "@/components/Footer";
+import ExperiencePortfolioTabWorker from "@/components/Module/Profile/ExperiencePortfolioTabWorker";
 import Navbar from "@/components/Navbar";
 
 import PortofolioItem from "@/components/Profile/PortofolioItem";
 import { getWorkerId } from "@/configs/redux/action/workerAction";
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,7 +16,7 @@ const ProfileDetail = () => {
 
   const profile = useSelector((state) => state.worker.profile);
   const skills = useSelector((state) => state.skills.skills);
-  const role = useSelector((state) => state.auth.role);
+  const role = useSelector((state) => state.checkRole.role);
 
   useEffect(() => {
     dispatch(getWorkerId(id));
@@ -60,7 +61,13 @@ const ProfileDetail = () => {
               <p className="font-normal text-sm leading-6 text-[#9EA0A5] w-full">
                 {profile.description || "Your Description"}
               </p>
-              {role === "Recruiter" && (
+              <button
+                onClick={handleHire}
+                className="justify-center bg-[#5E50A1]  items-center px-16 py-4 text-white whitespace-nowrap rounded"
+              >
+                Hire
+              </button>
+              {role === "recruiter" && (
                 <button
                   onClick={handleHire}
                   className="justify-center bg-[#5E50A1]  items-center px-16 py-4 text-white whitespace-nowrap rounded"
@@ -83,7 +90,7 @@ const ProfileDetail = () => {
           </div>
 
           <div className="flex flex-col basis-8/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg ">
-            {/* <ExperiencePortfolioTab /> */}
+            <ExperiencePortfolioTabWorker user={id} />
           </div>
         </div>
       </div>

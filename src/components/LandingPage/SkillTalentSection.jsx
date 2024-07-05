@@ -46,8 +46,7 @@ const SkillTalentSection = () => {
               Skill Tallent
             </h2>
             <p className="mt-8 text-lg leading-7 text-gray-600 max-md:max-w-full">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              Look for the talent you want here who has various types of skills
             </p>
             <div className="mt-9 max-md:pr-5 max-md:max-w-full">
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
