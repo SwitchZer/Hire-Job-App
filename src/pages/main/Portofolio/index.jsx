@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Portofilio = () => {
-  return (
-    <div>Portofilio</div>
-  )
-}
+  return <div>Portofilio</div>;
+};
 
-export default Portofilio
+export default Portofilio;

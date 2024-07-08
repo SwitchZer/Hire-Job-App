@@ -12,7 +12,7 @@ const Footer = () => {
         </p>
         <div className="shrink-0 mt-20 h-px bg-white border border-white border-solid max-md:mt-10 max-md:max-w-full" />
         <div className="flex gap-5 px-0.5 mt-9 w-full leading-[156%] max-md:flex-wrap max-md:max-w-full">
-          <div className="flex-auto">2020 Pewworld. All right reserved</div>
+          <div className="flex-auto">2024 Peworld. All right reserved</div>
           <div className="flex gap-5 justify-between whitespace-nowrap">
             <div>Telepon</div> <div>Email</div>
           </div>

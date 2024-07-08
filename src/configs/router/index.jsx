@@ -12,6 +12,7 @@ import ProfileWorker from "@/pages/main/ProfileWorker";
 import ProfileRecruiter from "@/pages/main/ProfileRecruiter";
 import ProfileDetail from "@/pages/main/ProfileDetail";
 import Hire from "@/pages/main/Hire";
+import EditProfileRecruiter from "@/pages/main/EditProfileRecruiter";
 
 const MainRouter = () => {
   // const { token } = useSelector((state) => state.auth);
@@ -79,6 +80,14 @@ const MainRouter = () => {
           element={
             <ProtectedRoute>
               <Hire />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profilerecruiter/edit"
+          element={
+            <ProtectedRoute>
+              <EditProfileRecruiter />
             </ProtectedRoute>
           }
         />

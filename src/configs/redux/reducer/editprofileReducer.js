@@ -11,9 +11,9 @@ import {
   ADD_SKILL_REQUEST,
   ADD_SKILL_SUCCESS,
   ADD_SKILL_FAILURE,
-  REMOVE_SKILL_REQUEST,
-  REMOVE_SKILL_SUCCESS,
-  REMOVE_SKILL_FAILURE,
+  DELETE_SKILL_REQUEST,
+  DELETE_SKILL_SUCCESS,
+  DELETE_SKILL_FAILURE,
 } from "@/configs/redux/action/editprofileAction";
 
 const initialState = {
@@ -61,7 +61,7 @@ const editprofileReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case ADD_SKILL_REQUEST:
-    case REMOVE_SKILL_REQUEST:
+    case DELETE_SKILL_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -73,14 +73,14 @@ const editprofileReducer = (state = initialState, action) => {
         isLoading: false,
         skills: [...state.skills, action.payload],
       };
-    case REMOVE_SKILL_SUCCESS:
+    case DELETE_SKILL_SUCCESS:
       return {
         ...state,
         isLoading: false,
         skills: state.skills.filter((skill) => skill.id !== action.payload),
       };
     case ADD_SKILL_FAILURE:
-    case REMOVE_SKILL_FAILURE:
+    case DELETE_SKILL_FAILURE:
       return {
         ...state,
         isLoading: false,

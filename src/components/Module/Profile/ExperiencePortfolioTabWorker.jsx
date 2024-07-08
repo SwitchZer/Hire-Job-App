@@ -13,8 +13,8 @@ const ExperiencePortfolioTabWorker = ({ user }) => {
     setToggle(id);
   };
 
-  const Portfolio = useSelector((state) => state.portfolio.portfolio);
-  const Experience = useSelector((state) => state.experience.experience);
+  const { portfolio } = useSelector((state) => state.portfolio);
+  const { experience } = useSelector((state) => state.experience);
 
   useEffect(() => {
     dispatch(getPortfolio(user));
@@ -70,11 +70,11 @@ const ExperiencePortfolioTabWorker = ({ user }) => {
 
       <div className={toggle === 1 ? "block" : "hidden"}>
         <div className="grid grid-cols-3 gap-x-[18px] gap-y-[30px] max-lg:grid-cols-1">
-          {Portfolio.map((item) => (
+          {portfolio.map((item) => (
             <div key={item.portofolio_id}>
               <PortfolioContent
                 app={item.application_name}
-                image={item.image || "Mask Group.png"}
+                image={item.image || "/Mask Group.png"}
                 link={item.link_repository}
               />
             </div>
@@ -84,7 +84,7 @@ const ExperiencePortfolioTabWorker = ({ user }) => {
 
       <div className={toggle === 2 ? "block" : "hidden"}>
         <div className="flex flex-col gap-4">
-          {Experience.map((item) => (
+          {/* {experience.map((item) => (
             <div key={item.experience_id}>
               <ExperienceContent
                 companyLogo={item.photo}
@@ -96,7 +96,7 @@ const ExperiencePortfolioTabWorker = ({ user }) => {
                 // description={item.description}
               />
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

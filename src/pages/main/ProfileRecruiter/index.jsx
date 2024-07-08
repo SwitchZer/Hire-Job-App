@@ -40,14 +40,14 @@ const ProfileRecruiter = () => {
               src={myProfile.photo || "Mask Group.png"}
               alt=""
             />
-            {/* <img className="size-[150px] rounded-full object-cover" src={myProfile.photo ? myProfile.photo : Person1} alt="" /> */}
+            
           </div>
 
           <div className="flex flex-col gap-[34px] bg-[#FFFFFF] pt-[95px] pb-[190px] px-[250px] items-center h-fit">
             <div className="flex flex-col gap-5 items-center text-center">
               <div className="flex flex-col gap-[13px] items-center">
                 <h2 className="font-semibold text-[22px] text-[#1F2A36]">
-                  {myProfile.name}
+                  {myProfile.company}
                 </h2>
                 <p className="font-normal text-sm leading-6 text-[#1F2A36]">
                   {myProfile.position}
@@ -60,7 +60,7 @@ const ProfileRecruiter = () => {
                 </div>
               </div>
               <p className="font-normal text-sm leading-6 text-[#9EA0A5] w-full">
-                {myProfile.description}
+                {myProfile.description || "Your Description Here"}
               </p>
               <button
                 onClick={handleEdit}
@@ -69,12 +69,21 @@ const ProfileRecruiter = () => {
                 Edit profile
               </button>
             </div>
-            {/* <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]">
-              <SocialMedia image={EmailIcon} social={myProfile.email} />
-              <SocialMedia image={InstagramIcon} social={myProfile.instagram} />
-              <SocialMedia image={PhoneIcon} social={myProfile.phone} />
-              <SocialMedia image={LinkedinIcon} social={myProfile.linkedin} />
-            </div> */}
+            <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]">
+              <div className="flex items-center gap-5">
+                <img className="w-6" src="/instagram.svg" alt="" />
+                <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
+                  {myProfile.instagram || "Your Instagram Link Here"}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-5">
+                <img className="w-6" src="/linkedin 1.svg" alt="" />
+                <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
+                  {myProfile.linkedin || "Your Linkedin Link Here"}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

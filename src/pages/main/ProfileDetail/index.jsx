@@ -14,7 +14,7 @@ const ProfileDetail = () => {
 
   const dispatch = useDispatch();
 
-  const profile = useSelector((state) => state.worker.profile);
+  const { profile } = useSelector((state) => state.worker);
   const skills = useSelector((state) => state.skills.skills);
   const role = useSelector((state) => state.checkRole.role);
 
@@ -38,7 +38,7 @@ const ProfileDetail = () => {
           <div className="flex flex-col basis-4/12 gap-[34px] bg-[#FFFFFF] p-[30px] h-fit rounded-lg">
             <div className="flex flex-col gap-5 items-center">
               <img
-                src={profile.photo || "Mask Group.png"}
+                src={profile.photo || "/Mask Group.png"}
                 className="size-24 rounded-full"
               />
               <div className="flex flex-col gap-[13px] w-full">
@@ -61,30 +61,25 @@ const ProfileDetail = () => {
               <p className="font-normal text-sm leading-6 text-[#9EA0A5] w-full">
                 {profile.description || "Your Description"}
               </p>
-              <button
-                onClick={handleHire}
-                className="justify-center bg-[#5E50A1]  items-center px-16 py-4 text-white whitespace-nowrap rounded"
-              >
-                Hire
-              </button>
+
               {role === "recruiter" && (
                 <button
                   onClick={handleHire}
                   className="justify-center bg-[#5E50A1]  items-center px-16 py-4 text-white whitespace-nowrap rounded"
                 >
-                  Edit profile
+                  Hire
                 </button>
               )}
             </div>
 
-            {skills.map((skill) => (
+            {/* {skills.map((skill) => (
               <li key={skill.id}>
                 {skill.skill_name}
-                {/* <button onClick={() => handleRemoveSkill(skill.id)}>
+                <button onClick={() => handleRemoveSkill(skill.id)}>
                   Remove
-                </button> */}
+                </button>
               </li>
-            ))}
+            ))} */}
 
             <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]"></div>
           </div>

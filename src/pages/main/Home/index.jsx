@@ -34,12 +34,14 @@ const Home = () => {
   };
 
   const handlePrevious = () => {
-    setParams({
-      ...params,
-      page: params.page - 1,
-    });
+    if (params.page > 1) {
+      setParams({
+        ...params,
+        page: params.page - 1,
+      });
+    }
   };
-  
+
   const handleNext = () => {
     setParams({
       ...params,
@@ -54,6 +56,7 @@ const Home = () => {
   const handleSearch = () => {
     setParams({
       ...params,
+      page: 1,
       search: searchInput,
       sort: selectedSort,
       sortBy: selectedSortBy,
@@ -63,11 +66,21 @@ const Home = () => {
   const handleSortChange = (e) => {
     const selectedValue = e.target.value;
     setSelectedSort(selectedValue);
+    setParams({
+      ...params,
+      page: 1, // Reset the page to 1
+      sort: selectedValue,
+    });
   };
 
   const handleSortByChange = (e) => {
     const selectedValue = e.target.value;
     setSelectedSortBy(selectedValue);
+    setParams({
+      ...params,
+      page: 1, // Reset the page to 1
+      sortBy: selectedValue,
+    });
   };
   return (
     <>
@@ -138,7 +151,7 @@ const Home = () => {
                 {talent.map((item) => (
                   <div key={item.id} onClick={() => handleNavigate(item.id)}>
                     <HomeCard
-                      image={item.photo}
+                      image={item.photo || "Mask Group.png"}
                       name={item.name}
                       job={item.job_desk}
                       location={item.domicile}

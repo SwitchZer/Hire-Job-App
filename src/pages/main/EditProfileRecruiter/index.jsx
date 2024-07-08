@@ -1,33 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addSkill,
-  deleteSkill,
-  fetchProfile,
+  editProfileRecruiter,
+  uploadFileRecruiter,
   uploadFileWorker,
 } from "@/configs/redux/action/editprofileAction";
 import Input from "@/components/EditProfile/Input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { fetchSkills } from "@/configs/redux/action/fetchSkillAction";
-import { editProfile } from "@/configs/redux/action/editprofileAction";
 import TextArea from "@/components/EditProfile/TextArea";
 import { useNavigate } from "react-router-dom";
-import ExperienceForm from "@/components/Module/experienceForm";
-import PortfolioForm from "@/components/Module/portfolioForm";
+import { getProfile } from "@/configs/redux/action/recruiterAction";
 
-const EditProfile = () => {
+const EditProfileRecruiter = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.skills);
   const { profile, loading, error } = useSelector((state) => state.profile);
   const [form, setForm] = useState({
-    name: "",
-    job_desk: "",
-    domicile: "",
-    workplace: "",
+    company: "",
+    position: "",
+    city: "",
     description: "",
-    skill_name: "",
+    instagram: "",
+    phone: "",
+    linkedin: "",
   });
 
   const handleChange = (e) => {
@@ -39,42 +35,35 @@ const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editProfile(form));
-  };
-
-  const handleAddSkill = (e) => {
-    e.preventDefault();
-    dispatch(addSkill(form));
-  };
-
-  const handleDeleteSkill = (id) => {
-    dispatch(deleteSkill(id));
+    dispatch(editProfileRecruiter(form));
+    navigate("/profilerecruiter");
   };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    dispatch(uploadFileWorker(file));
+    dispatch(uploadFileRecruiter(file));
   };
 
   const handleCancel = () => {
-    navigate("/profileworker");
+    navigate("/profilerecruiter");
   };
 
   useEffect(() => {
     if (profile) {
       setForm({
-        name: profile.name || "",
-        job_desk: profile.job_desk || "",
-        domicile: profile.domicile || "",
-        workplace: profile.workplace || "",
+        company: profile.company || "",
+        position: profile.position || "",
+        city: profile.city || "",
         description: profile.description || "",
+        instagram: profile.instagram || "",
+        phone: profile.phone || "",
+        linkedin: profile.linkedin || "",
       });
     }
   }, [profile]);
 
   useEffect(() => {
-    dispatch(fetchProfile());
-    dispatch(fetchSkills());
+    dispatch(getProfile());
   }, [dispatch]);
 
   if (loading) {
@@ -98,8 +87,8 @@ const EditProfile = () => {
                 {profile && (
                   <div className="flex flex-col items-start py-8 pr-20 pl-8 w-full text-sm leading-9 bg-white rounded-lg text-zinc-400 max-md:px-5">
                     <img
-                      src={profile.photo}
-                      className="size-28 rounded-full mx-auto object-cover"
+                      src={profile.photo || "/Mask Group.png"}
+                      className="size-28 rounded-full mx-auto"
                     />
                     <div className="m-auto pt-5 flex gap-3 leading-[143%]">
                       <input
@@ -109,30 +98,29 @@ const EditProfile = () => {
                       />
                       <img
                         loading="lazy"
-                        src="edit (1) 1.svg"
+                        src="/edit (1) 1.svg"
                         alt=""
                         className="shrink-0 w-4 aspect-square"
                       />
                       <div className="flex-auto">Edit</div>
                     </div>
                     <h1 className="mt-14 text-2xl font-semibold text-gray-800 max-md:mt-10">
-                      {profile.name}
+                      {profile.company}
                     </h1>
                     <p className="mt-5 text-gray-800 leading-[171%]">
-                      {profile.job_desk || "Please Add Job Desk"}
+                      {profile.position || "Please Add Position"}
                     </p>
                     <div className="flex gap-3 mt-5 leading-[143%]">
                       <img
                         loading="lazy"
-                        src="map-pin (4) 1.svg"
+                        src="/map-pin (4) 1.svg"
                         alt=""
                         className="shrink-0 w-4 aspect-square"
                       />
-                      <div className="flex-auto">{profile.domicile}</div>
+                      <div className="flex-auto">
+                        {profile.city || "Please Add you Domicile"}
+                      </div>
                     </div>
-                    <p className="mt-5 uppercase leading-[143%]">
-                      {profile.role}
-                    </p>
                   </div>
                 )}
               </section>
@@ -158,32 +146,25 @@ const EditProfile = () => {
                   <hr className="shrink-0 mt-6 h-px border border-solid bg-stone-300 border-stone-300 max-md:max-w-full" />
                   <div className="flex flex-col px-8 mt-9 text-xs text-zinc-400 max-md:px-5 max-md:max-w-full">
                     <Input
-                      name="name"
-                      value={form.name}
+                      name="company"
+                      value={form.company}
                       onChange={handleChange}
-                      label="Nama lengkap"
+                      label="Company Name"
                       placeholder="Masukan nama lengkap"
                     />
                     <Input
-                      name="job_desk"
-                      value={form.job_desk}
+                      name="position"
+                      value={form.position}
                       onChange={handleChange}
-                      label="Job desk"
+                      label="Positon on Company"
                       placeholder="Masukan job desk"
                     />
                     <Input
-                      name="domicile"
-                      value={form.domicile}
+                      name="city"
+                      value={form.city}
                       onChange={handleChange}
                       label="Domicile"
                       placeholder="Masukan domisili"
-                    />
-                    <Input
-                      name="workplace"
-                      value={form.workplace}
-                      onChange={handleChange}
-                      label="Workplace"
-                      placeholder="Masukan tempat kerja"
                     />
                     <TextArea
                       name="description"
@@ -193,63 +174,29 @@ const EditProfile = () => {
                       placeholder="Tuliskan deskripsi singkat"
                       className="items-start px-4 pt-5 pb-24 mt-1 text-sm bg-white rounded border border-gray-200 border-solid text-neutral-400 max-md:pr-5 max-md:max-w-full"
                     />
-                  </div>
-                </section>
-
-                <section className="flex flex-col py-14 mt-8 whitespace-nowrap bg-white rounded-lg max-md:max-w-full">
-                  <h2 className="self-start ml-8 text-2xl font-semibold text-gray-800 leading-[56.1px] max-md:ml-2.5">
-                    Skill
-                  </h2>
-                  <div className="shrink-0 mt-6 h-px border border-solid bg-stone-300 border-stone-300 max-md:max-w-full" />
-                  <div className="gap-5 mx-8 text-sm max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full">
                     <Input
-                      name="skill_name"
-                      value={form.skill_name}
+                      name="instagram"
+                      value={form.instagram}
                       onChange={handleChange}
-                      placeholder="Masukan job desk"
+                      label="Instagram"
+                      placeholder="Masukan tempat kerja"
+                    />
+                    <Input
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      label="Phone Number"
+                      placeholder="Masukan tempat kerja"
+                    />
+                    <Input
+                      name="linkedin"
+                      value={form.linkedin}
+                      onChange={handleChange}
+                      label="Linkedin"
+                      placeholder="Masukan tempat kerja"
                     />
                   </div>
-                  <button
-                    onClick={handleAddSkill}
-                    className="bg-amber-400 py-2 mx-8 px-4 text-white whitespace-nowrap rounded"
-                  >
-                    Simpan
-                  </button>
-                  {data.length > 0 && (
-                    <>
-                      <div className="ml-8 pt-5">
-                        <p>
-                          <i>Note: Clicked skills will be deleted!</i>
-                        </p>
-                      </div>
-                      <ul className="flex gap-2 ml-8 pt-4">
-                        <div className="flex flex-col gap-5">
-                          <ul className="flex flex-wrap gap-x-[10px] gap-y-[20px]">
-                            {data.map((item) => (
-                              <li key={item.id} className="flex">
-                                <button className="flex px-[14px] py-[4px] bg-amber-400 rounded-[4px] font-semibold text-xs leading-5 text-white">
-                                  <div className="flex justify-between items-center gap-1">
-                                    {item.skill_name}
-                                    <p
-                                      className="ml-2 cursor-pointer text-red-600"
-                                      onClick={() => handleDeleteSkill(item.id)}
-                                    >
-                                      X
-                                    </p>
-                                  </div>
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </ul>
-                    </>
-                  )}
                 </section>
-
-                <ExperienceForm />
-
-                <PortfolioForm />
               </div>
             </div>
           </div>
@@ -260,4 +207,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditProfileRecruiter;

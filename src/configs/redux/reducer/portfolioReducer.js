@@ -8,6 +8,9 @@ import {
   FETCH_MYPORTFOLIO_REQUEST,
   FETCH_MYPORTFOLIO_SUCCESS,
   FETCH_MYPORTFOLIO_FAILURE,
+  UPLOAD_FILE_REQUEST,
+  UPLOAD_FILE_SUCCESS,
+  UPLOAD_FILE_FAILURE,
 } from "@/configs/redux/action/portfolioAction";
 
 const initialState = {
@@ -15,6 +18,7 @@ const initialState = {
   myPortfolio: [],
   loading: false,
   error: null,
+  file: "",
 };
 
 const portfolioReducer = (state = initialState, action) => {
@@ -68,6 +72,24 @@ const portfolioReducer = (state = initialState, action) => {
         error: null,
       };
     case FETCH_MYPORTFOLIO_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case UPLOAD_FILE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case UPLOAD_FILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        file: action.payload,
+      };
+    case UPLOAD_FILE_FAILURE:
       return {
         ...state,
         loading: false,

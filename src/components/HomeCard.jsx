@@ -7,7 +7,10 @@ const HomeCard = ({ image, name, job, location, onClick }) => {
   return (
     <div className="flex bg-[#FFFFFF] p-[20px] items-center justify-between h-fit">
       <div className="flex gap-5 items-center">
-        <img src={image || "Mask Group.png"} className="size-24 rounded-full" />
+        <img
+          src={image || "Mask Group.png"}
+          className="size-24 object-cover rounded-full"
+        />
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-[22px] text-[#1F2A36]">
             {name ? name : "Name"}

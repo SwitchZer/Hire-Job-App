@@ -10,9 +10,9 @@ export const EDIT_PROFILE_FAILURE = "EDIT_PROFILE_FAILURE";
 export const ADD_SKILL_REQUEST = "ADD_SKILL_REQUEST";
 export const ADD_SKILL_SUCCESS = "ADD_SKILL_SUCCESS";
 export const ADD_SKILL_FAILURE = "ADD_SKILL_FAILURE";
-export const REMOVE_SKILL_REQUEST = "REMOVE_SKILL_REQUEST";
-export const REMOVE_SKILL_SUCCESS = "REMOVE_SKILL_SUCCESS";
-export const REMOVE_SKILL_FAILURE = "REMOVE_SKILL_FAILURE";
+export const DELETE_SKILL_REQUEST = "DELETE_SKILL_REQUEST";
+export const DELETE_SKILL_SUCCESS = "DELETE_SKILL_SUCCESS";
+export const DELETE_SKILL_FAILURE = "DELETE_SKILL_FAILURE";
 export const UPLOAD_FILE_REQUEST = "UPLOAD_FILE_REQUEST";
 export const UPLOAD_FILE_SUCCESS = "UPLOAD_FILE_SUCCESS";
 export const UPLOAD_FILE_FAILURE = "UPLOAD_FILE_FAILURE";
@@ -56,21 +56,6 @@ export const addSkillFailure = (error) => ({
   type: ADD_SKILL_FAILURE,
   payload: error,
 });
-
-export const removeSkillRequest = () => ({
-  type: REMOVE_SKILL_REQUEST,
-});
-
-export const removeSkillSuccess = (skillId) => ({
-  type: REMOVE_SKILL_SUCCESS,
-  payload: skillId,
-});
-
-export const removeSkillFailure = (error) => ({
-  type: REMOVE_SKILL_FAILURE,
-  payload: error,
-});
-
 // Action Creators
 
 export const fetchProfile = () => {
@@ -104,14 +89,29 @@ export const editProfile = (data) => {
   };
 };
 
-export const addSkill = (skill) => {
+export const editProfileRecruiter = (data) => {
+  return (dispatch) => {
+    dispatch(editProfileRequest());
+
+    api
+      .put("/recruiters/profile", data)
+      .then(() => {
+        dispatch(editProfileSuccess());
+      })
+      .catch((error) => {
+        dispatch(editProfileFailure(error.message));
+      });
+  };
+};
+
+export const addSkill = (data) => {
   return (dispatch) => {
     dispatch(addSkillRequest());
 
     api
-      .post("/skills", { skill })
-      .then((response) => {
-        dispatch(addSkillSuccess(response.data.data));
+      .post("/skills", data)
+      .then(() => {
+        dispatch(addSkillSuccess());
       })
       .catch((error) => {
         dispatch(addSkillFailure(error.message));
@@ -119,18 +119,15 @@ export const addSkill = (skill) => {
   };
 };
 
-export const removeSkill = (id) => {
-  return (dispatch) => {
-    dispatch(removeSkillRequest());
-
-    api
-      .delete(`/skills/${id}`)
-      .then(() => {
-        dispatch(removeSkillSuccess(id));
-      })
-      .catch((error) => {
-        dispatch(removeSkillFailure(error.message));
-      });
+export const deleteSkill = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: DELETE_SKILL_REQUEST });
+      await api.delete(`/skills/${id}`);
+      dispatch({ type: DELETE_SKILL_SUCCESS, payload: id });
+    } catch (error) {
+      dispatch({ type: DELETE_SKILL_FAILURE, payload: error.message });
+    }
   };
 };
 
@@ -142,6 +139,32 @@ export const uploadFileWorker = (photo) => async (dispatch) => {
     formData.append("photo", photo);
 
     const response = await api.put("/workers/profile/photo", formData);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+
+    const data = await response.json();
+    dispatch({
+      type: UPLOAD_FILE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPLOAD_FILE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
+
+export const uploadFileRecruiter = (photo) => async (dispatch) => {
+  try {
+    dispatch({ type: UPLOAD_FILE_REQUEST });
+
+    const formData = new FormData();
+    formData.append("photo", photo);
+
+    const response = await api.put("/recruiters/profile/photo", formData);
 
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status}`);

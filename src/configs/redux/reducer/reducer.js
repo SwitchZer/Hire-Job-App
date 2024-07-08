@@ -8,6 +8,7 @@ import experienceReducer from "./experienceReducer";
 import roleReducer from "./checkRoleReducer";
 import recruiterReducer from "./recruiterReducer";
 import { fetchSkillReducer } from "./fetchskillReducer";
+import hireReducer from "./hireReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   portfolio: portfolioReducer,
   experience: experienceReducer,
   recruiter: recruiterReducer,
+  hire: hireReducer,
 });
 
 export default rootReducer;

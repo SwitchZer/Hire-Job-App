@@ -3,14 +3,30 @@ import React, { useEffect, useState } from "react";
 import PortfolioContent from "@/components/Base/PortfolioContent";
 import ExperienceContent from "@/components/Base/ExperienceContent";
 import { useDispatch, useSelector } from "react-redux";
-import { getMyPortfolio } from "@/configs/redux/action/portfolioAction";
-import { getMyExperience } from "@/configs/redux/action/experienceAction";
+import {
+  deletePortfolio,
+  getMyPortfolio,
+} from "@/configs/redux/action/portfolioAction";
+import {
+  deleteExperience,
+  getMyExperience,
+} from "@/configs/redux/action/experienceAction";
+// import { useNavigate } from "react-router-dom";
 
 const ExperiencePortfolioTab = () => {
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const [toggle, setToggle] = useState(1);
   const handleToggle = (id) => {
     setToggle(id);
+  };
+
+  const handleDeletePortfolio = (id) => {
+    dispatch(deletePortfolio(id));
+  };
+
+  const handleDeleteExperience = (id) => {
+    dispatch(deleteExperience(id));
   };
 
   const { myPortfolio } = useSelector((state) => state.portfolio);
@@ -71,12 +87,22 @@ const ExperiencePortfolioTab = () => {
       <div className={toggle === 1 ? "block" : "hidden"}>
         <div className="grid grid-cols-3 gap-x-[18px] gap-y-[30px] max-lg:grid-cols-1">
           {myPortfolio.map((item) => (
-            <div key={item.portofolio_id}>
+            <div
+              key={item.portofolio_id}
+              // onClick={() => navigate(`portfolio/${item.portofolio_id}`)}
+            >
               <PortfolioContent
                 app={item.application_name}
                 image={item.image || "Mask Group.png"}
-                link={item.link_repository}
               />
+              <div>
+                <button
+                  onClick={() => handleDeletePortfolio(item.portofolio_id)}
+                  className="flex w-full px-[14px] py-[4px] bg-red-600 bg-opacity-60 border border-red-600 border-solid rounded-[4px] font-semibold text-xs leading-5 text-white"
+                >
+                  Delete Portfolio
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -85,7 +111,10 @@ const ExperiencePortfolioTab = () => {
       <div className={toggle === 2 ? "block" : "hidden"}>
         <div className="flex flex-col gap-4">
           {myExperience.map((item) => (
-            <div key={item.experience_id}>
+            <div
+              key={item.experience_id}
+              // onClick={() => navigate(`experience/${item.experience_id}`)}
+            >
               <ExperienceContent
                 companyLogo={item.photo}
                 position={item.position}
@@ -95,6 +124,14 @@ const ExperiencePortfolioTab = () => {
                 // duration={item.duration_in_months}
                 // description={item.description}
               />
+              <div>
+                <button
+                  onClick={() => handleDeleteExperience(item.experience_id)}
+                  className="flex px-[14px] py-[4px] bg-red-600 bg-opacity-60 border border-red-600 border-solid rounded-[4px] font-semibold text-xs leading-5 text-white"
+                >
+                  Delete Experience
+                </button>
+              </div>
             </div>
           ))}
         </div>

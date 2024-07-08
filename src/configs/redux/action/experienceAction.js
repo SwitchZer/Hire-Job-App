@@ -9,6 +9,9 @@ export const FETCH_EXPERIENCE_FAILURE = "FETCH_EXPERIENCE_FAILURE";
 export const FETCH_MYEXPERIENCE_REQUEST = "FETCH_MYEXPERIENCE_REQUEST";
 export const FETCH_MYEXPERIENCE_SUCCESS = "FETCH_MYEXPERIENCE_SUCCESS";
 export const FETCH_MYEXPERIENCE_FAILURE = "FETCH_MYEXPERIENCE_FAILURE";
+export const DELETE_EXPERIENCE_REQUEST = "DELETE_EXPERIENCE_REQUEST";
+export const DELETE_EXPERIENCE_SUCCESS = "DELETE_EXPERIENCE_SUCCESS";
+export const DELETE_EXPERIENCE_FAILURE = "DELETE_EXPERIENCE_FAILURE";
 
 export const addExperience = (experienceData) => {
   return async (dispatch) => {
@@ -46,6 +49,18 @@ export const getExperience = (id) => {
       dispatch({ type: FETCH_EXPERIENCE_SUCCESS, payload: response.data });
     } catch (error) {
       dispatch({ type: FETCH_EXPERIENCE_FAILURE, payload: error });
+    }
+  };
+};
+
+export const deleteExperience = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: DELETE_EXPERIENCE_REQUEST });
+      await api.delete(`/experience/${id}`);
+      dispatch({ type: DELETE_EXPERIENCE_SUCCESS, payload: id });
+    } catch (error) {
+      dispatch({ type: DELETE_EXPERIENCE_FAILURE, payload: error.message });
     }
   };
 };
