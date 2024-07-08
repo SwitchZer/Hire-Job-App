@@ -39,7 +39,7 @@ const ProfileDetail = () => {
             <div className="flex flex-col gap-5 items-center">
               <img
                 src={profile.photo || "/Mask Group.png"}
-                className="size-24 rounded-full"
+                className="size-28 rounded-full"
               />
               <div className="flex flex-col gap-[13px] w-full">
                 <h2 className="font-semibold text-[22px] text-[#1F2A36]">
