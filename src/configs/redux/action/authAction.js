@@ -1,4 +1,5 @@
 import api from "@/configs/api";
+import { toast } from "react-toastify";
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
@@ -34,11 +35,13 @@ export const loginUser =
         dispatch({ type: "LOGIN_SUCCESS", payload: token });
         localStorage.setItem("token", token);
         localStorage.setItem("refreshToken", refreshToken);
+        toast.success(res.data.message);
         navigate("/home");
       })
       .catch((err) => {
-        console.log(err.response);
-        dispatch({ type: "LOGIN_SUCCESS", payload: err.response });
+        const error = err.response.data;
+        toast.error(error.message);
+        dispatch({ type: "LOGIN_FAILURE", payload: err.response });
       });
   };
 
@@ -57,10 +60,12 @@ export const register = ({ name, email, phone, password }, navigate) => {
       .post("/workers/register", data)
       .then(() => {
         dispatch(registerSuccess());
+        toast.success("Registration successful!");
         navigate("/login");
       })
       .catch((error) => {
         dispatch(registerFailure(error.message));
+        toast.error("Registration failed. Please try again.");
       });
   };
 };
@@ -74,9 +79,11 @@ export const logoutUser = () => {
       // Remove the token from localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("refreshToken");
+      toast.success("Logout successful!");
     } catch (error) {
       // Handle any errors that may occur during the logout process
       console.error("Logout error:", error);
+      toast.error("Logout failed. Please try again.");
     }
   };
 };

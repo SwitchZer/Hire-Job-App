@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "@/configs/redux/action/authAction";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(form, navigate));
+    dispatch(loginUser(form, navigate, toast));
   };
   const handleChange = (e) => {
     setForm({
