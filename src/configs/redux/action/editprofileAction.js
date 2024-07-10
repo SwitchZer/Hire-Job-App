@@ -74,6 +74,8 @@ export const fetchProfile = () => {
   };
 };
 
+import { toast } from "react-toastify";
+
 export const editProfile = (data) => {
   return (dispatch) => {
     dispatch(editProfileRequest());
@@ -82,9 +84,11 @@ export const editProfile = (data) => {
       .put("/workers/profile", data)
       .then(() => {
         dispatch(editProfileSuccess());
+        toast.success("Profile updated successfully");
       })
       .catch((error) => {
         dispatch(editProfileFailure(error.message));
+        toast.error(error.message);
       });
   };
 };
@@ -97,9 +101,11 @@ export const editProfileRecruiter = (data) => {
       .put("/recruiters/profile", data)
       .then(() => {
         dispatch(editProfileSuccess());
+        toast.success("Profile updated successfully");
       })
       .catch((error) => {
         dispatch(editProfileFailure(error.message));
+        toast.error(error.message);
       });
   };
 };
@@ -112,9 +118,11 @@ export const addSkill = (data) => {
       .post("/skills", data)
       .then(() => {
         dispatch(addSkillSuccess());
+        toast.success("Skill added successfully");
       })
       .catch((error) => {
         dispatch(addSkillFailure(error.message));
+        toast.error(error.message);
       });
   };
 };
@@ -125,8 +133,10 @@ export const deleteSkill = (id) => {
       dispatch({ type: DELETE_SKILL_REQUEST });
       await api.delete(`/skills/${id}`);
       dispatch({ type: DELETE_SKILL_SUCCESS, payload: id });
+      toast.success("Skill deleted successfully");
     } catch (error) {
       dispatch({ type: DELETE_SKILL_FAILURE, payload: error.message });
+      toast.error(error.message);
     }
   };
 };
@@ -149,11 +159,13 @@ export const uploadFileWorker = (photo) => async (dispatch) => {
       type: UPLOAD_FILE_SUCCESS,
       payload: data,
     });
+    toast.success("File uploaded successfully");
   } catch (error) {
     dispatch({
       type: UPLOAD_FILE_FAILURE,
       payload: error.message,
     });
+    toast.error(error.message);
   }
 };
 
@@ -175,10 +187,12 @@ export const uploadFileRecruiter = (photo) => async (dispatch) => {
       type: UPLOAD_FILE_SUCCESS,
       payload: data,
     });
+    toast.success("File uploaded successfully");
   } catch (error) {
     dispatch({
       type: UPLOAD_FILE_FAILURE,
       payload: error.message,
     });
+    toast.error(error.message);
   }
 };

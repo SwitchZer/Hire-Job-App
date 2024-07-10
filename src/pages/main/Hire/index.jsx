@@ -14,7 +14,6 @@ const Hire = () => {
   const dispatch = useDispatch();
 
   const { profile } = useSelector((state) => state.worker);
-  const skills = useSelector((state) => state.skills.skills);
   const role = useSelector((state) => state.checkRole.role);
 
   const [form, setForm] = useState({

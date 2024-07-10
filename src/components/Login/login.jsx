@@ -16,7 +16,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(form, navigate, toast));
+    dispatch(loginUser(form, navigate));
   };
   const handleChange = (e) => {
     setForm({
