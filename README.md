@@ -65,7 +65,7 @@ To run this project, you will need to add the following environment variables to
    </tr>
    <tr>
       <td><img width="350px" src="./public/screenshoot/LoginPage.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/RegisterRecruiters.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/RegisterWorker.png" border="0" alt="" /></td>
    </tr>
    <tr>
       <td>Profile Page</td>
