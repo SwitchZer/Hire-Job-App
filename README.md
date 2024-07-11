@@ -56,8 +56,17 @@ To run this project, you will need to add the following environment variables to
       <td>Home Page</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/screenshoot/PeworldWebLandingPage.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/PeworldWebHome.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/LandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/HomePage.png" border="0" alt="" /></td>
+   </tr>
+    <tr>
+      <td>Login Page</td>
+      <td>Register Page</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/screenshoot/LoginPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/RegisterRecruiters.png" border="0" alt="" />
+      <img width="350px" src="./public/screenshoot/RegisterWorkers.png" border="0" alt="" /></td>
    </tr>
 </table>
 
