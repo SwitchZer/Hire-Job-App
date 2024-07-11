@@ -101,11 +101,12 @@ const EditProfile = () => {
                       src={profile.photo}
                       className="size-28 rounded-full mx-auto object-cover"
                     />
-                    <div className="m-auto pt-5 flex gap-3 leading-[143%]">
+                    <div className="m-auto pt-5 flex gap-3 cursor-pointer leading-[143%]">
                       <input
                         type="file"
                         id="upload-photo"
                         onChange={handleFileUpload}
+                        className="hidden"
                       />
                       <img
                         loading="lazy"
