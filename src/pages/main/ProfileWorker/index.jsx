@@ -94,34 +94,42 @@ const ProfileWorker = () => {
                 History Hire
               </h3>
               <ul className="flex flex-wrap gap-x-[10px] gap-y-[20px]">
-                {history.map((item) => (
-                  <div
-                    key={item.hire_id}
-                    className="flex bg-[#FFFFFF] p-[20px] items-center border border-black rounded-md justify-between h-fit"
-                  >
-                    <div className="flex gap-5 items-center">
-                      <div className="flex flex-col gap-2">
-                        <h2 className="font-semibold text-[22px] text-[#1F2A36]">
-                          {item.message_purpose}
-                        </h2>
-                        <p className="font-normal text-sm leading-6 text-[#1F2A36]">
-                          {item.recruiters_company}
-                        </p>
-                        <div className="flex gap-[11px]">
-                          <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
-                            {item.recruiters_position}
+                {history.length === 0 ? (
+                  <div className="flex justify-center items-center h-[50vh]">
+                    <p className="text-[#1F2A36] font-normal text-lg">
+                      No hire requests found.
+                    </p>
+                  </div>
+                ) : (
+                  history.map((item) => (
+                    <div
+                      key={item.hire_id}
+                      className="flex bg-[#FFFFFF] p-[20px] items-center border border-black rounded-md justify-between h-fit"
+                    >
+                      <div className="flex gap-5 items-center">
+                        <div className="flex flex-col gap-2">
+                          <h2 className="font-semibold text-[22px] text-[#1F2A36]">
+                            {item.message_purpose}
+                          </h2>
+                          <p className="font-normal text-sm leading-6 text-[#1F2A36]">
+                            {item.recruiters_company}
+                          </p>
+                          <div className="flex gap-[11px]">
+                            <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
+                              {item.recruiters_position}
+                            </p>
+                          </div>
+                          <p className="font-normal text-sm leading-4 text-[#1F2A36]">
+                            {item.description_request_hire}
+                          </p>
+                          <p className="font-normal text-sm leading-4 text-[#1F2A36]">
+                            Please Contact : {item.email_request_hire}
                           </p>
                         </div>
-                        <p className="font-normal text-sm leading-4 text-[#1F2A36]">
-                          {item.description_request_hire}
-                        </p>
-                        <p className="font-normal text-sm leading-4 text-[#1F2A36]">
-                          Please Contact : {item.email_request_hire}
-                        </p>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </ul>
             </div>
 
