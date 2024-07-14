@@ -95,47 +95,50 @@ const EditProfile = () => {
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-4/12 max-md:ml-0 max-md:w-full">
               <section className="flex flex-col text-base font-bold max-md:mt-8">
-                {profile && (
-                  <div className="flex flex-col items-start py-8 pr-20 pl-8 w-full text-sm leading-9 bg-white rounded-lg text-zinc-400 max-md:px-5">
-                    <img
-                      src={profile.photo}
-                      className="size-28 rounded-full mx-auto object-cover"
+                <div className="flex flex-col items-start py-8 pr-20 pl-8 w-full text-sm leading-9 bg-white rounded-lg text-zinc-400 max-md:px-5">
+                  <img
+                    src={profile.photo}
+                    className="size-28 rounded-full mx-auto object-cover"
+                  />
+
+                  <label
+                    htmlFor="upload-photo"
+                    className="m-auto pt-5 flex gap-3 cursor-pointer leading-[143%]"
+                  >
+                    <input
+                      type="file"
+                      id="upload-photo"
+                      onChange={handleFileUpload}
+                      className="hidden"
                     />
-                    <div className="m-auto pt-5 flex gap-3 cursor-pointer leading-[143%]">
-                      <input
-                        type="file"
-                        id="upload-photo"
-                        onChange={handleFileUpload}
-                        className="hidden"
-                      />
-                      <img
-                        loading="lazy"
-                        src="edit (1) 1.svg"
-                        alt=""
-                        className="shrink-0 w-4 aspect-square"
-                      />
-                      <div className="flex-auto">Edit</div>
-                    </div>
-                    <h1 className="mt-14 text-2xl font-semibold text-gray-800 max-md:mt-10">
-                      {profile.name}
-                    </h1>
-                    <p className="mt-5 text-gray-800 leading-[171%]">
-                      {profile.job_desk || "Please Add Job Desk"}
-                    </p>
-                    <div className="flex gap-3 mt-5 leading-[143%]">
-                      <img
-                        loading="lazy"
-                        src="map-pin (4) 1.svg"
-                        alt=""
-                        className="shrink-0 w-4 aspect-square"
-                      />
-                      <div className="flex-auto">{profile.domicile}</div>
-                    </div>
-                    <p className="mt-5 uppercase leading-[143%]">
-                      {profile.role}
-                    </p>
+                    <img
+                      loading="lazy"
+                      src="edit (1) 1.svg"
+                      alt=""
+                      className="shrink-0 w-4 aspect-square"
+                    />
+                    <div className="flex-auto">Edit</div>
+                  </label>
+
+                  <h1 className="mt-14 text-2xl font-semibold text-gray-800 max-md:mt-10">
+                    {profile.name}
+                  </h1>
+                  <p className="mt-5 text-gray-800 leading-[171%]">
+                    {profile.job_desk || "Please Add Job Desk"}
+                  </p>
+                  <div className="flex gap-3 mt-5 leading-[143%]">
+                    <img
+                      loading="lazy"
+                      src="map-pin (4) 1.svg"
+                      alt=""
+                      className="shrink-0 w-4 aspect-square"
+                    />
+                    <div className="flex-auto">{profile.domicile}</div>
                   </div>
-                )}
+                  <p className="mt-5 uppercase leading-[143%]">
+                    {profile.role}
+                  </p>
+                </div>
               </section>
               <button
                 onClick={handleSubmit}
