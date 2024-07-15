@@ -77,11 +77,9 @@ To run this project, you will need to add the following environment variables to
    </tr>
    <tr>
       <td>Edit Profile Page</td>
-      <td>Hire Worker Page</td>
    </tr>
    <tr>
       <td><img width="350px" src="./public/screenshoot/EditProfile.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/HireWorker.png" border="0" alt="" /></td>
    </tr>
 </table>
 
