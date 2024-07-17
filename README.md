@@ -57,7 +57,7 @@ To run this project, you will need to add the following environment variables to
    </tr>
    <tr>
       <td><img width="350px" src="./public/screenshoot/LandingPage.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/HomePage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/Home1.png" border="0" alt="" /></td>
    </tr>
     <tr>
       <td>Login Page</td>
@@ -72,8 +72,8 @@ To run this project, you will need to add the following environment variables to
       <td>Detail Worker Page</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/screenshoot/ProfileWorker.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/DetailWorker.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/ProfileWorker1.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/DetailWorker1.png" border="0" alt="" /></td>
    </tr>
    <tr>
       <td>Edit Profile Page</td>
