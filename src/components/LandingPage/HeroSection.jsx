@@ -10,8 +10,8 @@ const HeroSection = () => {
               The country's best talent for revolutionary change 4.0
             </h1>
             <p className="mt-11 text-lg leading-7 text-gray-600 max-md:mt-10 max-md:max-w-full">
-              publish your profile, portfolio and work experience here and GET
-              HIRE!
+              Publish your profile, portfolio and work experience here and GET
+              HIRED!
             </p>
             <button className="justify-center self-start p-6 mt-14 text-base font-bold text-white rounded bg-[#5E50A1] max-md:px-5 max-md:mt-10">
               Start Now

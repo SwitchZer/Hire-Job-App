@@ -33,7 +33,7 @@ const SkillTalentSection = () => {
     },
     {
       icon: "/tick 13.svg",
-      text: "10+ Bahasa lainnya",
+      text: "10+ Other programming languages",
     },
   ];
 
