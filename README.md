@@ -56,7 +56,7 @@ To run this project, you will need to add the following environment variables to
       <td>Home Page</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/screenshoot/LandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/LandingPage1.png" border="0" alt="" /></td>
       <td><img width="350px" src="./public/screenshoot/Home1.png" border="0" alt="" /></td>
    </tr>
     <tr>
