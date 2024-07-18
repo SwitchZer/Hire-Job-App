@@ -8,7 +8,11 @@ const Footer = () => {
           className="max-w-full aspect-[3.57] w-[178px]"
         />
         <p className="mt-9 leading-7 max-md:max-w-full text-wrap">
-          A song can make or ruin a person’s day if they let it get to them.
+          Peworld is revolutionizing the way we connect job seekers with their
+          dream careers. By leveraging cutting-edge technology, we empower
+          individuals to showcase their unique skills and experiences, while
+          enabling employers to find the perfect fit for their open roles. With
+          Peworld, the path to professional fulfillment has never been clearer.
         </p>
         <div className="shrink-0 mt-20 h-px bg-white border border-white border-solid max-md:mt-10 max-md:max-w-full" />
         <div className="flex gap-5 px-0.5 mt-9 w-full leading-[156%] max-md:flex-wrap max-md:max-w-full">
