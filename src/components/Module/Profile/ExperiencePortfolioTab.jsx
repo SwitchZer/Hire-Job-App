@@ -118,6 +118,8 @@ const ExperiencePortfolioTab = () => {
               <ExperienceContent
                 companyLogo={item.photo}
                 position={item.position}
+                startDate={item.work_month}
+                endDate={item.work_year}
                 company={item.company}
                 description={item.description}
               />
