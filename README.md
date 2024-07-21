@@ -81,7 +81,7 @@ To run this project, you will need to add the following environment variables to
    </tr>
    <tr>
       <td><img width="350px" src="./public/screenshoot/ProfileWorker1.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/screenshoot/Experience.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/Experience1.png" border="0" alt="" /></td>
    </tr>
    <tr>
       <td>Edit Profile Page</td>
