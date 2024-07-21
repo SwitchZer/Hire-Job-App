@@ -40,7 +40,6 @@ const ProfileRecruiter = () => {
               src={myProfile.photo || "Mask Group.png"}
               alt=""
             />
-            
           </div>
 
           <div className="flex flex-col gap-[34px] bg-[#FFFFFF] pt-[95px] pb-[190px] px-[250px] items-center h-fit">
@@ -71,9 +70,23 @@ const ProfileRecruiter = () => {
             </div>
             <div className="flex flex-col gap-6 font-normal text-sm leading-5 text-[#9EA0A5]">
               <div className="flex items-center gap-5">
+                <img className="w-6" src="/mailr.svg" alt="" />
+                <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
+                  {myProfile.email || "Your Instagram Link Here"}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-5">
                 <img className="w-6" src="/instagram.svg" alt="" />
                 <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
                   {myProfile.instagram || "Your Instagram Link Here"}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-5">
+                <img className="w-6" src="/phone 1.svg" alt="" />
+                <p className="font-normal text-sm leading-5 text-[#9EA0A5]">
+                  {myProfile.phone || "Your Instagram Link Here"}
                 </p>
               </div>
 

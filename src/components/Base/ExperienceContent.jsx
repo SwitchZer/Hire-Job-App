@@ -16,12 +16,12 @@ const ExperienceContent = ({
         <div className="">
           <h4 className="font-semibold text-xl text-[#1F2A36]">{position}</h4>
           <p className="font-normal text-lg text-[#46505C]">{company}</p>
-          <p className="font-normal text-base text-[#9EA0A5]">
+          {/* <p className="font-normal text-base text-[#9EA0A5]">
             {startDate} - {endDate}
           </p>
           <p className="font-normal text-base text-[#9EA0A5]">
             {duration} months
-          </p>
+          </p> */}
         </div>
         <p className="font-normal text-sm leading-6 text-[#1F2A36]">
           {description}

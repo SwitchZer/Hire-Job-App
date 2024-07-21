@@ -119,10 +119,7 @@ const ExperiencePortfolioTab = () => {
                 companyLogo={item.photo}
                 position={item.position}
                 company={item.company}
-                //   startDate={formatDate(item.start_date)}
-                //   endDate={formatDate(item.end_date)}
-                // duration={item.duration_in_months}
-                // description={item.description}
+                description={item.description}
               />
               <div>
                 <button

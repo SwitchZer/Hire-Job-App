@@ -44,7 +44,7 @@ const ExperienceForm = () => {
           name="company"
           value={form.company}
           onChange={handleChange}
-          label="Job desk"
+          label="Company"
           placeholder="Masukan job desk"
         />
         <Input

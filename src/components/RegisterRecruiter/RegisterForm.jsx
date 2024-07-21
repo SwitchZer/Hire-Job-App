@@ -27,7 +27,7 @@ const RegisterForm = () => {
       })
       .then((res) => {
         alert("selamat berhasil login");
-        navigate("/Login");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err.response);
