@@ -75,11 +75,37 @@ To run this project, you will need to add the following environment variables to
       <td><img width="350px" src="./public/screenshoot/ProfileWorker1.png" border="0" alt="" /></td>
       <td><img width="350px" src="./public/screenshoot/DetailWorker1.png" border="0" alt="" /></td>
    </tr>
+      <tr>
+      <td>Profile Page</td>
+      <td>Profile Experience Page</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/screenshoot/ProfileWorker1.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/Experience.png" border="0" alt="" /></td>
+   </tr>
    <tr>
       <td>Edit Profile Page</td>
+      <td>Detail Worker Page</td>
    </tr>
    <tr>
       <td><img width="350px" src="./public/screenshoot/EditProfile.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/DetailWorker1.png" border="0" alt="" /></td>
+   </tr>
+   <tr>
+      <td>Detail Worker with Recruiter Page</td>
+      <td>Hire Page</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/screenshoot/DetailWorkerHire.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/Hire.png" border="0" alt="" /></td>
+   </tr>
+   <tr>
+      <td>Recruiter Profile Page</td>
+      <td>Recruiter Edit Page</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/screenshoot/RecruiterProfile.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/screenshoot/RecruiterEdit.png" border="0" alt="" /></td>
    </tr>
 </table>
 
